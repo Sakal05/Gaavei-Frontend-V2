@@ -14,6 +14,11 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import Grid from "@mui/material/Grid";
 import theme from "../../theme";
 
+const userInfo = {
+  fullname: "Sakal Samanng",
+  address: "0x1234567890987654321"
+};
+
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -60,7 +65,7 @@ export default function AccountMenu() {
             overflow: "visible",
             filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
             borderRadius: "15px",
-            width: "200px",
+            width: "220px",
             mt: 1.5,
             "& .MuiAvatar-root": {
               width: 32,
@@ -86,15 +91,25 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem onClick={handleClose}>
-          <Avatar
-            alt="Remy Sharp"
-            src="https://plus.unsplash.com/premium_photo-1687609112015-23bcdb2385f4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          />
-          Profile
+          <Grid container sx={{ display: "flex", alignItems: "center" }}>
+            <Grid item>
+              <Avatar
+                alt="Remy Sharp"
+                src="https://plus.unsplash.com/premium_photo-1687609112015-23bcdb2385f4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              />
+            </Grid>
+
+            <Grid item sx={{ maxWidth: "80%", overflowWrap: "break-word" }}>
+            <Typography variant="body2">{userInfo.fullname}</Typography>
+            <Typography variant="body2">
+              {`${userInfo.address.slice(0, 6)}...${userInfo.address.slice(-5)}`}
+            </Typography>
+          </Grid>
+          </Grid>
         </MenuItem>
         <Divider />
         <MenuItem sx={{ display: "block" }}>
-          <Typography variant="body1">0.00 ETH</Typography>
+          <Typography variant="body2">0.00 ETH</Typography>
           <Typography variant="subtitle2">Wallet Balance</Typography>
         </MenuItem>
 

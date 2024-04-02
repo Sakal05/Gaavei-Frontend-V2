@@ -14,8 +14,8 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 function ResponsiveAppBar() {
 
   return (
-    <AppBar position="static" sx={{ bgcolor: theme.palette.primary.light, paddingLeft: '15%', paddingRight: '15%'}}>
-      <Container>
+    <AppBar position="static" sx={{ bgcolor: theme.palette.primary.light }}>
+      <Container sx={{ width: "80%"}}>
         <Toolbar disableGutters  sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Typography
             variant="h6"

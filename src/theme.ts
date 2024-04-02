@@ -34,6 +34,10 @@ const theme = createTheme({
       fontSize: "1rem",
       fontWeight: 300,
     },
+    body2: {
+        fontSize: "1rem",
+      fontWeight: 400,
+    },
     subtitle1: {
       // Define style for secondary text
       fontSize: "0.875rem",
