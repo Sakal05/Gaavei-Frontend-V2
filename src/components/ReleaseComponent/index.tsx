@@ -1,11 +1,15 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import TrendingCard from "./TrendingCard";
+import ReleaseCard from "./ReleaseCard";
 import { Typography } from "@mui/material";
+import { IReleaseCard } from "./ReleaseCard";
 
-import { TrendingContentMock } from '@/DummyData/TrendingData'
+interface IRelease {
+  releaseTitle: string;
+  content: IReleaseCard[];
+}
 
-export default function Trending() {
+export default function NewRelease({ releaseTitle, content }: IRelease) {
   return (
     <Box
       sx={{
@@ -17,20 +21,19 @@ export default function Trending() {
       }}
     >
       <Typography variant="h6" sx={{ marginBottom: "20px" }}>
-        Trending
+        {releaseTitle}
       </Typography>
       <Grid
         container
-        rowSpacing={{ xs: 2, sm: 2, md: 4, lg: 4 }}
-        columnSpacing={{ xs: 2, sm: 2, md: 4, lg: 4 }}
+        rowSpacing={{ xs: 1, sm: 1, md: 1, lg: 2 }}
+        columnSpacing={{ xs: 1, sm: 1, md: 1, lg: 2 }}
         // justifyContent="center" // Aligns items horizontally to the center
-        alignItems="flex-start" // Aligns items vertically to the center
+        // alignItems="flex-start" // Aligns items vertically to the center
         sx={{
-          margin: "auto",
           width: "100%",
         }}
       >
-        {TrendingContentMock.map((info, index) => (
+        {content.map((info, index) => (
           <Grid
             item
             xs={12}
@@ -40,17 +43,18 @@ export default function Trending() {
             key={index}
             sx={{
               display: "flex",
-              justifyContent: "center", // Centers items horizontally
-              alignItems: "center", // Centers items vertically
               width: "100%",
             }}
           >
-            <TrendingCard
+            <ReleaseCard
               image={info.image}
               title={info.title}
               description={info.description}
+              tier={info.tier}
+              author={info.author}
               tokenId={info.tokenId}
               available={info.available}
+              price={info.price}
             />
           </Grid>
         ))}

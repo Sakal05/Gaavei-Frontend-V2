@@ -27,7 +27,7 @@ function TrendingCard({
   return (
     <Card
       sx={{
-        width: 450,
+        width: "100%",
         border: "none",
         boxShadow: "none",
         borderRadius: "12px",
@@ -44,7 +44,7 @@ function TrendingCard({
           title={title}
         />
         <CardContent>
-          <Grid container sx={{ margin: "auto" }}>
+          <Grid container sx={{ margin: "auto", width: "100%" }}>
             <Grid
               item
               xs={8}
@@ -52,11 +52,12 @@ function TrendingCard({
               lg={8}
               sx={{
                 display: "flex",
+                witdth: "100%",
               }}
             >
               <Typography
                 gutterBottom
-                variant="h5"
+                variant="h3"
                 component="div"
                 sx={{ paddingBottom: "10px" }}
               >
@@ -89,7 +90,7 @@ function TrendingCard({
             </Grid>
           </Grid>
 
-          <Typography variant="body1" noWrap>
+          <Typography variant="subtitle2" noWrap>
             {description}
           </Typography>
         </CardContent>

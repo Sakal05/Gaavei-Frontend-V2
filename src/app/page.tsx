@@ -1,16 +1,20 @@
-import Image from "next/image";
+// import Image from "next/image";
 import Sponsor from "@/components/Sponsor";
-import Container from "@mui/material/Container";
+// import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import ResponsiveAppBar from "@/components/NavBar";
 import Box from "@mui/material/Box";
-import { Typography } from "@mui/material";
+// import { Typography } from "@mui/material";
 import Trending from "@/components/Trending";
+import Release from "@/components/ReleaseComponent";
+import Learn from "@/components/Learn";
+import { NEWRELEASEDATA } from "@/DummyData/NewReleaseData";
+import { ArticleData } from "@/DummyData/ArticleData";
 
 export default function Home() {
   return (
     <Box sx={{ width: "100%" }}>
-      <ResponsiveAppBar />
+      {/* <ResponsiveAppBar /> */}
       <Box
         sx={{
           width: "100%",
@@ -26,7 +30,7 @@ export default function Home() {
           rowSpacing={3}
           // columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           sx={{
-            width: "80%",
+            width: "70%",
             margin: "auto",
             display: "flex",
             flexDirection: "column",
@@ -34,16 +38,16 @@ export default function Home() {
           }}
         >
           <Grid item xs={12} sm={12} lg={12}>
-            <Trending/>
+            <Trending />
           </Grid>
           <Grid item xs={12} sm={12} lg={12}>
-            kdmv1
+            <Release releaseTitle="New Release" content={NEWRELEASEDATA} />
           </Grid>
           <Grid item xs={12} sm={12} lg={12}>
-            kdmv2
+            <Release releaseTitle="Local Release" content={NEWRELEASEDATA} />
           </Grid>
           <Grid item xs={12} sm={12} lg={12}>
-            kdmv3
+            <Learn contents={ArticleData}/>
           </Grid>
         </Grid>
       </Box>

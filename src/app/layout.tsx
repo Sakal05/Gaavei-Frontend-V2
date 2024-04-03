@@ -21,6 +21,7 @@ export default function RootLayout({
       <body className="py-0">
         <AppRouterCacheProvider options={{ key: "css" }}>
           <ThemeProvider theme={theme}>
+          <ResponsiveAppBar />
             {children}
           </ThemeProvider>
         </AppRouterCacheProvider>
