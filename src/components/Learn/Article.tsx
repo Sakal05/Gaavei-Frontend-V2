@@ -33,6 +33,7 @@ function Article({ title, image, readTime, link, description }: IArticle) {
             height: 200, // Adjust the image height as needed
             objectFit: "cover", // Maintain the aspect ratio of the image
             marginBottom: "10px",
+            borderRadius: '12px'
           }}
           image={image}
           title={title}
