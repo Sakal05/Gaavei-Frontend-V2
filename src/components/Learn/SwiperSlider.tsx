@@ -15,6 +15,10 @@ import {
   Mousewheel,
 } from "swiper/modules";
 
+import "swiper/css";
+import "swiper/css/autoplay";
+import "swiper/css/scrollbar";
+
 export default function SwiperSlider({ contents }: { contents: IArticle[] }) {
   const swiperRef = useRef<SwiperType>();
   console.log("n time");
@@ -40,9 +44,9 @@ export default function SwiperSlider({ contents }: { contents: IArticle[] }) {
       autoplay={{
         delay: 2000,
       }}
-    //   onBeforeInit={(swiper) => {
-    //     swiperRef.current = swiper;
-    //   }}
+      onBeforeInit={(swiper) => {
+        swiperRef.current = swiper;
+      }}
     >
       {contents.map((content, index) => {
         // console.log(index);

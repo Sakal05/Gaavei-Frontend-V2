@@ -10,9 +10,7 @@ import IconButton from "@mui/material/IconButton";
 import SwiperSlider from "./SwiperSlider";
 import Chip from "@mui/material/Chip";
 
-import "swiper/css";
-import "swiper/css/autoplay";
-import "swiper/css/scrollbar";
+
 
 function Learn({ contents }: { contents: IArticle[] }) {
   return (

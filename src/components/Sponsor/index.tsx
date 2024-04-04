@@ -1,16 +1,27 @@
-import SponsorCard from "./SponsorCard";
-import Box from "@mui/material/Box";
-import MobileStepper from "@mui/material/MobileStepper";
 import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import { Suspense } from "react";
+import { Box, Grid, Typography } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import IconButton from "@mui/material/IconButton";
+import SponsorCard from "./SponsorSlider";
+import { NEWRELEASEDATA } from "@/DummyData/NewReleaseData";
+
+
+import "swiper/css";
+import "swiper/css/autoplay";
+import "swiper/css/scrollbar";
 
 const Sponsor = () => {
-
+  
   return (
-      <SponsorCard />
+    <Suspense fallback={<CircularProgress />}>
+      <SponsorCard contents={NEWRELEASEDATA}/>
+    </Suspense>
   );
 };
 

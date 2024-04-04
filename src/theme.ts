@@ -82,6 +82,9 @@ const theme = createTheme({
       main: "#FF0000",
       light: "#ff6666",
     },
+    background: {
+      default: "#aaaaaa"
+    }
   },
 });
 
