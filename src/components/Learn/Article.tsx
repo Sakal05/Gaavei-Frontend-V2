@@ -2,10 +2,9 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Box, Button, CardActionArea, CardActions } from "@mui/material";
+import { CardActionArea } from "@mui/material";
 import Chip from "@mui/material/Chip";
 import Grid from "@mui/material/Grid";
-import theme from "../../theme";
 
 export interface IArticle {
   title: string;
@@ -20,20 +19,19 @@ function Article({ title, image, readTime, link, description }: IArticle) {
     <Card
       sx={{
         width: "100%",
-        padding: "15px",
+        padding: "10px",
         // height: "400px",
-        border: "none",
         boxShadow: "none",
         borderRadius: "12px",
       }}
     >
-      <CardActionArea>
+      <CardActionArea sx={{ border: "0.2px solid grey" }}>
         <CardMedia
           sx={{
             height: 200, // Adjust the image height as needed
             objectFit: "cover", // Maintain the aspect ratio of the image
             marginBottom: "10px",
-            borderRadius: '12px'
+            borderRadius: "12px",
           }}
           image={image}
           title={title}
@@ -73,10 +71,9 @@ function Article({ title, image, readTime, link, description }: IArticle) {
                 variant="body1"
                 gutterBottom
                 paragraph
-
                 sx={{
-                //   height: "80px",
-                //   overflow: "hidden",
+                  //   height: "80px",
+                  //   overflow: "hidden",
                   textOverflow: "ellipsis",
                 }}
               >
