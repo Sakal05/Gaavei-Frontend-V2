@@ -56,7 +56,7 @@ export default function ReleaseCard({
               margin: "auto",
               padding: "5px",
               width: "100%",
-              height: "100%",
+              // height: "100%",
               display: "flex",
               flexDirection: "row",
               alignItems: "center", // Align items to the center vertically
@@ -78,21 +78,21 @@ export default function ReleaseCard({
               <CardMedia
                 component="img"
                 sx={{
-                  width: "100%", // Set width to maintain square aspect ratio
-                  // height: "100%",
+                  width: "150px", // Set width to maintain square aspect ratio
+                  height: "100px",
                   borderRadius: "12px", // Add border radius
-                  objectFit: "fill",
+                  objectFit: "cover",
                 }}
                 image={image}
-                alt="Live from space album cover"
+                alt={title}
               />
             </Grid>
             {/* Text Fields */}
             <Grid
               item
-              xs={7}
-              md={7}
-              lg={7}
+              xs={6}
+              md={6}
+              lg={6}
               sx={{
                 display: "flex",
                 width: "100%", // Set width to maintain square
@@ -105,7 +105,7 @@ export default function ReleaseCard({
                 noWrap
                 variant="subtitle1"
                 sx={{
-                  paddingBottom: "1px",
+                  // paddingBottom: "1px",
                   width: "100%",
                   fontWeight: "semibold",
                   fontSize: "18px",
@@ -113,43 +113,33 @@ export default function ReleaseCard({
               >
                 {title}
               </Typography>
-              {/* <Typography
-                noWrap
-                variant="body1"
+              <Typography
+                component="span"
                 sx={{
-                  paddingBottom: "1px",
-                  width: "100%", // Set width to maintain square
+                  display: "inline", // Ensure tier and price are displayed inline
+                  fontWeight: "500", // Make price bold
+                  fontSize: "0.875rem",
+                  paddingBottom: "5px",
                 }}
               >
                 {author}
-              </Typography> */}
+              </Typography>
               <Typography
                 noWrap
                 variant="subtitle2"
                 sx={{
-                  paddingBottom: "1px",
                   width: "100%", // Set width to maintain square
                 }}
               >
-                {tier} -{" "}
-                <Typography
-                  component="span"
-                  sx={{
-                    display: "inline", // Ensure tier and price are displayed inline
-                    fontWeight: "500", // Make price bold
-                    fontSize: "0.875rem",
-                  }}
-                >
-                  {price ? price : "Comming..."}
-                </Typography>
+                {tier}
               </Typography>
             </Grid>
             {/* View More Button */}
             <Grid
               item
-              xs={2}
-              md={2}
-              lg={2}
+              xs={3}
+              md={3}
+              lg={3}
               sx={{
                 display: "flex",
                 justifyContent: "center",
@@ -158,7 +148,9 @@ export default function ReleaseCard({
                 width: "100%",
               }}
             >
-              <PlayCircleIcon fontSize="large" />
+              <Typography variant="h6">
+                {price ? price : "Comming Soon..."}
+              </Typography>
             </Grid>
           </Grid>
         </CardContent>
