@@ -15,7 +15,7 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar position="static" sx={{ bgcolor: theme.palette.primary.light, boxShadow: 'none'}}>
-      <Container sx={{ width: "70%"}}>
+      <Container sx={{ width: "90%"}}>
         <Toolbar disableGutters  sx={{ display: 'flex', justifyContent: 'space-between',  boxShadow: 'none'}}>
           <Typography
             variant="h6"
