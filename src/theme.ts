@@ -18,12 +18,12 @@ const theme = createTheme({
     },
     h2: {
       // Define style for h2 elements
-      fontSize: "1.5rem",
+      fontSize: "2rem",
       fontWeight: 500,
     },
     h3: {
       // Define style for h2 elements
-      fontSize: "1rem",
+      fontSize: "1.25rem",
       fontWeight: 500,
     },
     h4: {
@@ -83,8 +83,8 @@ const theme = createTheme({
       light: "#ff6666",
     },
     background: {
-      default: "#aaaaaa"
-    }
+      default: "#aaaaaa",
+    },
   },
 });
 

@@ -1,19 +1,22 @@
+// "use client";
+
+// import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import TrendingCard from "./TrendingCard";
 import { Typography } from "@mui/material";
+import { ICard } from "@/app/interface/ICard";
 
-import { TrendingContentMock } from '@/DummyData/TrendingData'
+export default function Trending({ contents }: { contents: ICard[] }) {
 
-export default function Trending() {
   return (
     <Box
       sx={{
         flexGrow: 1,
         width: "100%",
         margin: "auto",
-        justifyContent: "center",
-        alignItems: "center",
+        // justifyContent: "center",
+        // alignItems: "center",
       }}
     >
       <Typography variant="h6" sx={{ marginBottom: "20px" }}>
@@ -30,7 +33,7 @@ export default function Trending() {
           width: "100%",
         }}
       >
-        {TrendingContentMock.map((info, index) => (
+        {contents.map((info, index) => (
           <Grid
             item
             xs={12}
@@ -48,13 +51,18 @@ export default function Trending() {
             <TrendingCard
               image={info.image}
               title={info.title}
+              type={info.type}
+              author={info.author}
               description={info.description}
               tokenId={info.tokenId}
               available={info.available}
+              price={info.price}
+              tier={info.tier}
             />
           </Grid>
         ))}
       </Grid>
     </Box>
+    // )
   );
 }

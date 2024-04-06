@@ -6,6 +6,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
 import ResponsiveAppBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+
 export const metadata: Metadata = {
   title: "GAAVEI",
   description: "Ok",
@@ -22,7 +23,7 @@ export default function RootLayout({
         <AppRouterCacheProvider options={{ key: "css" }}>
           <ThemeProvider theme={theme}>
           <ResponsiveAppBar />
-            {children}
+              {children}
           <Footer/>
           </ThemeProvider>
         </AppRouterCacheProvider>

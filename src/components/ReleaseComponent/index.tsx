@@ -1,3 +1,6 @@
+// "use client";
+
+// import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import ReleaseCard from "./ReleaseCard";
@@ -10,6 +13,7 @@ interface IRelease {
 }
 
 export default function NewRelease({ releaseTitle, content }: IRelease) {
+
   return (
     <Box
       sx={{

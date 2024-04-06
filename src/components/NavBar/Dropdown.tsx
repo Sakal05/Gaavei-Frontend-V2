@@ -8,15 +8,17 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
-import Person from "@mui/icons-material/Person";
-import PaidIcon from "@mui/icons-material/Paid";
+import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import AutoGraphOutlinedIcon from "@mui/icons-material/AutoGraphOutlined";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import Grid from "@mui/material/Grid";
 import theme from "../../theme";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 
 const userInfo = {
   fullname: "Sakal Samanng",
-  address: "0x1234567890987654321"
+  address: "0x1234567890987654321",
 };
 
 export default function AccountMenu() {
@@ -90,7 +92,7 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleClose} sx={{ color: "primary.dark" }}>
           <Grid container sx={{ display: "flex", alignItems: "center" }}>
             <Grid item>
               <Avatar
@@ -100,37 +102,58 @@ export default function AccountMenu() {
             </Grid>
 
             <Grid item sx={{ maxWidth: "80%", overflowWrap: "break-word" }}>
-            <Typography variant="body2">{userInfo.fullname}</Typography>
-            <Typography variant="body2">
-              {`${userInfo.address.slice(0, 6)}...${userInfo.address.slice(-5)}`}
-            </Typography>
-          </Grid>
+              {/* <Typography variant="subtitle1">{userInfo.fullname}</Typography> */}
+              <Typography variant="subtitle1">
+                {`${userInfo.address.slice(0, 6)}...${userInfo.address.slice(
+                  -5
+                )}`}
+              </Typography>
+            </Grid>
           </Grid>
         </MenuItem>
         <Divider />
         <MenuItem sx={{ display: "block" }}>
-          <Typography variant="body2">0.00 ETH</Typography>
+          <Typography variant="subtitle1">0.00 ETH</Typography>
           <Typography variant="subtitle2">Wallet Balance</Typography>
         </MenuItem>
 
         <Divider />
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
-            <Person fontSize="medium" />
+            <AccountCircleOutlinedIcon
+              fontSize="medium"
+              sx={{ color: "primary.dark" }}
+            />
           </ListItemIcon>
-          Profile
+          <Typography variant="subtitle1">Profile</Typography>
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
-            <PaidIcon fontSize="medium" />
+            <AutoGraphOutlinedIcon
+              fontSize="medium"
+              sx={{ color: "primary.dark" }}
+            />
           </ListItemIcon>
-          Earning
+          <Typography variant="subtitle1">Earning</Typography>
         </MenuItem>
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
-            <ExitToAppIcon fontSize="medium" />
+            <SettingsOutlinedIcon
+              fontSize="medium"
+              sx={{ color: "primary.dark" }}
+            />
           </ListItemIcon>
-          Logout
+          <Typography variant="subtitle1">Setting</Typography>
+        </MenuItem>
+        <Divider />
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon>
+            <LogoutOutlinedIcon
+              fontSize="medium"
+              sx={{ color: "primary.dark" }}
+            />
+          </ListItemIcon>
+          <Typography variant="subtitle1">Logout</Typography>
         </MenuItem>
       </Menu>
     </React.Fragment>

@@ -1,150 +1,152 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Box, Button, CardActionArea, CardActions } from "@mui/material";
 import Chip from "@mui/material/Chip";
-import Grid from "@mui/material/Grid";
-import theme from "../../theme";
 import { grey } from "@mui/material/colors";
-
-interface ITrendingCard {
-  image: string;
-  title: string;
-  description: string;
-  tokenId: string;
-  available: boolean;
-}
+import { ICard } from "@/app/interface/ICard";
+// import Image from "next/image";
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 
 function TrendingCard({
   image,
   title,
+  author,
+  type,
   description,
   tokenId,
   available,
-}: ITrendingCard) {
+  tier,
+  price,
+}: ICard) {
   return (
-    <Card
+    <Box
       sx={{
         width: "100%",
         border: "none",
-        boxShadow: "none",
         borderRadius: "12px",
+        position: "relative",
       }}
     >
       <CardActionArea>
-        <CardMedia
+        <Box
           sx={{
             height: 200, // Adjust the image height as needed
             objectFit: "cover", // Maintain the aspect ratio of the image
             marginBottom: "10px",
+            flexDirection: "column",
+            justifyContent: "center",
+            position: "relative",
+            zIndex: 0,
+            borderRadius: "12px",
+            alignItems: "center",
+            "&::before": {
+              content: "''",
+              position: "absolute",
+              borderRadius: "12px",
+              top: 0,
+              left: 0,
+              width: "50%",
+              height: "100%",
+              background:
+                "linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0))", // Gradient from black to transparent
+              opacity: 0.8, // Adjust the opacity as needed
+              zIndex: 1,
+            },
           }}
-          image={image}
-          title={title}
-        />
-        <CardContent>
-          <Grid container sx={{ margin: "auto", width: "100%" }}>
-            <Grid
-              item
-              xs={8}
-              sm={8}
-              lg={8}
-              sx={{
-                display: "flex",
-                witdth: "100%",
-              }}
-            >
-              <Typography
-                gutterBottom
-                variant="h3"
-                component="div"
-                sx={{ paddingBottom: "10px" }}
-              >
-                {title}
-              </Typography>
-            </Grid>
-            <Grid
-              item
-              xs={4}
-              sm={4}
-              lg={4}
-              sx={{
-                display: "flex",
-                justifyContent: "flex-end", // Align content to the right
-                alignItems: "flex-start", // Align content to the top
-                height: "100%", // Make sure the grid item takes full height
-              }}
-            >
-              <Chip
-                label={available ? "ON SALE" : "COMMING..."}
-                sx={{
-                  height: "20px",
-                  fontWeight: "500",
-                  backgroundColor: available ? "#d5f4e2" : "#ffe0e0",
-                  color: available ? "#2ECC71" : "#FF0000",
-                  borderRadius: "15px",
-                }}
-                color={"success"}
-              />
-            </Grid>
-          </Grid>
+        >
+          <CardMedia
+            sx={{ height: 200, objectFit: "cover", borderRadius: "12px" }}
+            image={image}
+            title={title}
+          />
+          {/* <Image fill src={image} alt={title} style={{ objectFit: "cover", borderRadius: "12px", }} /> */}
 
-          <Typography variant="subtitle2" noWrap>
-            {description}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions
-        sx={{
-          margin: "auto",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        {available ? (
           <Box
             sx={{
-              width: "100%",
-              alignItems: "center",
-              justifyContent: "space-between",
-              display: "flex",
+              color: "primary.light",
+              zIndex: 22,
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              // width: "40%",
+              paddingX: "30px",
+              paddingY: "20px",
             }}
           >
-            <Typography variant="h6" noWrap>
-              Airdrop
-            </Typography>
-            <Button
-              variant="outlined"
+            <Chip
+              label={type}
               sx={{
-                width: "200px",
-                borderRadius: 3,
+                fontWeight: "500",
+                fontSize: "16px",
+                color: "primary.light",
+                borderRadius: "12px",
+                backgroundColor: "transparency",
+                backdropFilter: "blur(20px)",
+                marginBottom: "15px",
               }}
+            />
+            <Typography
+              variant="h2"
+              component="div"
+              sx={{ paddingBottom: "5px" }}
             >
-              <Typography variant="button">BUY NOW</Typography>
-            </Button>
+              {title}
+            </Typography>
+            <Typography variant="h6" noWrap>
+              {author}
+            </Typography>
           </Box>
-        ) : (
-          <Button
-            variant="contained"
-            sx={{
-              width: "100%",
-              borderRadius: 3,
-              bgcolor: grey[300],
-              "&.MuiButtonBase-root:hover": {
-                bgcolor: "transparent",
-              },
-            }}
-            disableElevation // Disable elevation effect
-            disableRipple // Disable ripple effect
-          >
-            <Typography variant="button">Comming Soon</Typography>
-          </Button>
-        )}
+        </Box>
+      </CardActionArea>
+
+      <CardActions
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center" // Center align both price and icon horizontally
+        >
+          <Typography variant="h6" noWrap>
+            {price ? price : "Comming Soon..."}
+          </Typography>
+          {price && (
+            <EmojiEventsIcon
+            fontSize="large"
+              sx={{
+                color:
+                  tier === "GOLD"
+                    ? "gold"
+                    : tier === "SILVER"
+                    ? "silver"
+                    : tier === "BROWN"
+                    ? "#cd7f32" // bronze color
+                    : "inherit", // default color
+                paddingLeft: "2px",
+                // verticalAlign: '',
+                // height: "100%",
+              }}
+            />
+          )}
+        </Box>
+        <Button
+          // variant="outlined"
+          sx={{
+            border: "0.6px solid",
+            borderColor: 'primary.dark',
+            color: 'primary.dark',
+            borderRadius: 3,
+            paddingX: "2em",
+          }}
+        >
+          <Typography variant="button" >BUY</Typography>
+        </Button>
       </CardActions>
-    </Card>
+    </Box>
   );
 }
 
