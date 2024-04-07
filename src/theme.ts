@@ -10,7 +10,11 @@ const roboto = Roboto({
 
 const theme = createTheme({
   typography: {
-    fontFamily: roboto.style.fontFamily,
+    fontFamily: [
+      'Roboto',
+      'Lato',
+      'sans-serif',
+    ].join(','),
     h1: {
       // Define style for h1 (title) elements
       fontSize: "2.5rem",
@@ -19,16 +23,16 @@ const theme = createTheme({
     h2: {
       // Define style for h2 elements
       fontSize: "2rem",
-      fontWeight: 500,
+      fontWeight: 600,
     },
     h3: {
       // Define style for h2 elements
-      fontSize: "1.25rem",
-      fontWeight: 500,
+      fontSize: "1.5rem",
+      fontWeight: 600,
     },
     h4: {
       fontSize: "1rem",
-      fontWeight: 400,
+      fontWeight: 600,
     },
     h5: {
       fontSize: "0.5rem",
@@ -37,7 +41,7 @@ const theme = createTheme({
     body1: {
       // Define style for normal text
       fontSize: "1rem",
-      fontWeight: 350,
+      fontWeight: 400,
     },
     body2: {
       fontSize: "0.8rem",
@@ -46,7 +50,7 @@ const theme = createTheme({
     subtitle1: {
       // Define style for secondary text
       fontSize: "1rem",
-      fontWeight: 400,
+      fontWeight: 600,
     },
     subtitle2: {
       fontSize: "0.875rem",
@@ -54,7 +58,7 @@ const theme = createTheme({
     },
     button: {
       fontSize: "1rem",
-      fontWeight: 500,
+      fontWeight: 600,
     },
 
     // h5: {

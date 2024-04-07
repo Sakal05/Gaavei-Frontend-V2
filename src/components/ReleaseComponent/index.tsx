@@ -6,6 +6,8 @@ import Grid from "@mui/material/Grid";
 import ReleaseCard from "./ReleaseCard";
 import { Typography } from "@mui/material";
 import { IReleaseCard } from "./ReleaseCard";
+import { NoSsr } from "@mui/base/NoSsr";
+import Loading from "../Loading";
 
 interface IRelease {
   releaseTitle: string;
@@ -13,26 +15,24 @@ interface IRelease {
 }
 
 export default function NewRelease({ releaseTitle, content }: IRelease) {
-
   return (
     <Box
       sx={{
         flexGrow: 1,
         width: "100%",
         margin: "auto",
-        justifyContent: "center",
-        alignItems: "center",
+        // justifyContent: "center",
+        // alignItems: "center",
       }}
     >
-      <Typography variant="h6" sx={{ marginBottom: "20px" }}>
+      <Typography variant="h3" sx={{ marginBottom: "20px" }}>
         {releaseTitle}
       </Typography>
       <Grid
         container
         rowSpacing={{ xs: 1, sm: 1, md: 1, lg: 2 }}
         columnSpacing={{ xs: 1, sm: 1, md: 1, lg: 2 }}
-        // justifyContent="center" // Aligns items horizontally to the center
-        // alignItems="flex-start" // Aligns items vertically to the center
+        // justifyContent="center"
         sx={{
           width: "100%",
         }}
@@ -45,10 +45,6 @@ export default function NewRelease({ releaseTitle, content }: IRelease) {
             md={6}
             lg={6}
             key={index}
-            sx={{
-              display: "flex",
-              width: "100%",
-            }}
           >
             <ReleaseCard
               image={info.image}

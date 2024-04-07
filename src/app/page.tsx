@@ -7,16 +7,9 @@ import { ArticleData } from "@/DummyData/ArticleData";
 import Loading from "@/components/Loading";
 import dynamic from "next/dynamic";
 import Portfolio from "@/components/Portfolio";
-
-const Trending = dynamic(() => import("@/components/Trending"), {
-  ssr: false,
-  loading: () => <Loading />,
-});
-
-const Release = dynamic(() => import("@/components/ReleaseComponent"), {
-  ssr: false,
-  loading: () => <Loading />,
-});
+import Release from "@/components/ReleaseComponent";
+import Trending from "@/components/Trending";
+import { Container } from "@mui/material";
 
 export default function Home() {
   return (
@@ -31,34 +24,40 @@ export default function Home() {
       }}
     >
       <Sponsor />
-      <Grid
-        container
-        rowSpacing={3}
-        // paddingX={'5%'}
-        paddingTop="20px"
-        sx={{
-          width: "90%",
-          display: "flex",
-          flexDirection: "column",
-          margin: "auto",
-        }}
-      >
-        <Grid item xs={12} sm={12} lg={12}>
-          <Portfolio balance={'0.005'} growthRate={"30"} data={[1, 60, 2, 5, 100, 4, 30]}/>
+      <Container maxWidth="lg">
+        <Grid
+          container
+          rowSpacing={3}
+          // paddingX={'5%'}
+          paddingTop="40px"
+          sx={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            margin: "auto",
+          }}
+        >
+          <Grid item xs={12} sm={12} lg={12}>
+            <Portfolio
+              balance={"0.005"}
+              growthRate={"30"}
+              data={[1, 60, 2, 5, 100, 4, 30]}
+            />
+          </Grid>
+          <Grid item xs={12} sm={12} lg={12}>
+            <Trending contents={NEWRELEASEDATA} />
+          </Grid>
+          <Grid item xs={12} sm={12} lg={12}>
+            <Release releaseTitle="New Release" content={NEWRELEASEDATA} />
+          </Grid>
+          <Grid item xs={12} sm={12} lg={12}>
+            <Release releaseTitle="Local Release" content={NEWRELEASEDATA} />
+          </Grid>
+          <Grid item xs={12} sm={12} lg={12}>
+            <Learn contents={ArticleData} />
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={12} lg={12}>
-          <Trending contents={NEWRELEASEDATA} />
-        </Grid>
-        <Grid item xs={12} sm={12} lg={12}>
-          <Release releaseTitle="New Release" content={NEWRELEASEDATA} />
-        </Grid>
-        <Grid item xs={12} sm={12} lg={12}>
-          <Release releaseTitle="Local Release" content={NEWRELEASEDATA} />
-        </Grid>
-        <Grid item xs={12} sm={12} lg={12}>
-          <Learn contents={ArticleData} />
-        </Grid>
-      </Grid>
+      </Container>
     </Box>
   );
 }

@@ -25,7 +25,7 @@ const SponsorCard = ({ contents }: { contents: ISponsorCard[] }) => {
       sx={{
         width: "100%",
         height: "230px",
-        margin: "0",
+        marginTop: "65px",
       }}
     >
       <Swiper

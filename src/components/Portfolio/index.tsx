@@ -5,25 +5,15 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import Link from "next/link";
+import Chart from "./Chart";
 
 interface IPortfolio {
-    balance: string;
-    growthRate: string;
-    data: number[];
+  balance: string;
+  growthRate: string;
+  data: number[];
 }
 
-import Loading from "@/components/Loading";
-import dynamic from "next/dynamic";
-const Chart = dynamic(() => import("./Chart"), {
-  ssr: false,
-  loading: () => <Loading />,
-});
-
-export default function Portfolio({
-    balance,
-    growthRate,
-    data
-}: IPortfolio) {
+export default function Portfolio({ balance, growthRate, data }: IPortfolio) {
   return (
     <Box
       sx={{
@@ -60,13 +50,15 @@ export default function Portfolio({
           </Typography>
         </Box>
       </Box>
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: "center"}}>
+      <Box
+        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      >
         <Link href="/">
           <Typography variant="button" color="blue">
             View Portfolio
           </Typography>
         </Link>
-        <Chart data={data}  />
+        <Chart data={data} />
       </Box>
     </Box>
   );

@@ -24,14 +24,14 @@ const HeaderCard = ({ title, image, author, available }: ISponsorCard) => {
             width: "100%",
             height: "100%",
             zIndex: 5,
-            borderRadius: "12px",
+            // borderRadius: "12px",
             background:
               "linear-gradient(0deg, rgba(0,0,0,0.4) 20%, rgba(15,15,15,0.2) 70%, rgba(0,0,0,0.5032606792717087) 80%)",
           }}
         />
         <CardMedia
           sx={{
-            height: "230px",
+            height: "250px",
             opacity: "0.8",
             zIndex: "-10",
             border: "none",
@@ -62,7 +62,7 @@ const HeaderCard = ({ title, image, author, available }: ISponsorCard) => {
                 label="Single"
                 sx={{
                   height: "20px",
-                  fontWeight: "500",
+                  fontWeight: "600",
                   color: "transparency",
                   borderRadius: "15px",
                   backgroundColor: "primary.light",
@@ -94,7 +94,9 @@ const HeaderCard = ({ title, image, author, available }: ISponsorCard) => {
           <Chip
             label="Comming Soon..."
             sx={{
+              fontFamily: "Roboto",
               height: "20px",
+              fontSize: '14px',
               fontWeight: "500",
               color: "primary.light",
               borderRadius: "5px",

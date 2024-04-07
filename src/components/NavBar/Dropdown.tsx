@@ -39,7 +39,7 @@ export default function AccountMenu() {
           textAlign: "center",
         }}
       >
-        <Tooltip title="Account settings">
+        <Tooltip title="Account Menu">
           <IconButton
             onClick={handleClick}
             size="small"
