@@ -12,20 +12,30 @@ export interface IArticle {
   image: string;
   link: string;
   description: string;
+  style?: React.CSSProperties;
 }
 
-function Article({ title, image, readTime, link, description }: IArticle) {
+function Article({ title, image, readTime, link, description, style }: IArticle) {
   return (
     <Card
       sx={{
-        width: "100%",
+        width: "100%", // Set width to fit 3 articles on one screen
+        flexShrink: 0, // Ensure no shrinking when container is resized
         padding: "10px",
-        // height: "400px",
         boxShadow: "none",
         borderRadius: "12px",
-      }}
+        display: "flex", // Set display to flex
+        flexDirection: "column", // Set flex direction to column
+        ...style
+      }}  
     >
-      <CardActionArea sx={{ border: "0.2px solid grey" }}>
+      <CardActionArea
+        sx={{
+          border: "0.2px solid grey",
+          // height: "100%",
+          margin: "auto",
+        }}
+      >
         <CardMedia
           sx={{
             height: 200, // Adjust the image height as needed
@@ -36,14 +46,20 @@ function Article({ title, image, readTime, link, description }: IArticle) {
           image={image}
           title={title}
         />
-        <CardContent>
+        <CardContent
+          sx={{
+            alignItems: "flex-start",
+          }}
+        >
           <Grid
             container
             direction="column"
             sx={{
+              justifyContent: "space-between",
               margin: "auto",
-              width: "100%",
-              height: "100%",
+              // width: "100%",
+              // height: "500px",
+              alignItems: "flex-start", // Align items to the top
             }}
           >
             <Grid
@@ -72,12 +88,10 @@ function Article({ title, image, readTime, link, description }: IArticle) {
                 gutterBottom
                 paragraph
                 sx={{
-                  //   height: "80px",
-                  //   overflow: "hidden",
                   textOverflow: "ellipsis",
                 }}
               >
-                {description}
+                {description.slice(0, 200)}...
               </Typography>
             </Grid>
             <Grid
