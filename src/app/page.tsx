@@ -4,8 +4,8 @@ import Box from "@mui/material/Box";
 import Learn from "@/components/Learn";
 import { NEWRELEASEDATA } from "@/DummyData/NewReleaseData";
 import { ArticleData } from "@/DummyData/ArticleData";
-import Loading from "@/components/Loading";
-import dynamic from "next/dynamic";
+import { COLLECTOR_DATA } from "@/DummyData/CollectorData";
+import Collector from "@/components/TopCollector";
 import Portfolio from "@/components/Portfolio";
 import Release from "@/components/ReleaseComponent";
 import Trending from "@/components/Trending";
@@ -52,6 +52,9 @@ export default function Home() {
           </Grid>
           <Grid item xs={12} sm={12} lg={12}>
             <Release releaseTitle="Local Release" content={NEWRELEASEDATA} />
+          </Grid>
+          <Grid item xs={12} sm={12} lg={12}>
+            <Collector contents={COLLECTOR_DATA}/>
           </Grid>
           <Grid item xs={12} sm={12} lg={12}>
             <Learn contents={ArticleData} />
