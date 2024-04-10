@@ -30,7 +30,7 @@ export default function CollectorCard({
         paddingX: "10px",
       }}
     >
-      <CardActionArea sx={{ position: "relative", height: "250px" }}>
+      <CardActionArea sx={{ position: "relative", width: '100%', height: "250px" }}>
         <CardMedia
           component="img"
           image={image_url}
@@ -93,7 +93,7 @@ export default function CollectorCard({
             <Box
               display="flex"
               justifyContent="flex-start"
-              alignItems="center" // Align items vertically at the center
+              alignItems="center" // Align items vertically at the center 
               width="100%"
               flexDirection="row"
             >
