@@ -1,7 +1,30 @@
-import Trending from '@/components/Trending';
-
+import Trending from "@/components/Trending";
+import { Box, Container, Grid } from "@mui/material";
+import MusicCover from "./MusicCover";
 export default function Edition() {
-    return (
-        <Trending/>
-    )
+  return (
+    <Box
+      sx={{
+        width: "100%",
+        margin: "auto", // Adjusted to center the content
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {/* <Box height={"20%"}> */}
+        <MusicCover
+          image={
+            "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          }
+          title={"nh kach klang nas"}
+          author={"sakal"}
+        />
+      {/* </Box> */}
+      <Container maxWidth="lg">
+        body
+      </Container>
+    </Box>
+  );
 }

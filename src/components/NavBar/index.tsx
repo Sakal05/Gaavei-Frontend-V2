@@ -11,6 +11,7 @@ import Link from "next/link";
 import { Grid } from "@mui/material";
 import { usePathname } from 'next/navigation'
 
+import CssBaseline from '@mui/material/CssBaseline';
 
 const pages = [
   { name: "Discover", route: "/" },
@@ -23,11 +24,13 @@ function ResponsiveAppBar() {
   // const router = useRouter();
   const pathname = usePathname()
   return (
+    <Box sx={{ display: 'flex' }}>
     <AppBar
-      position="fixed"
+      // position="fixed"
+      component="nav"
       sx={{ bgcolor: theme.palette.primary.light }}
     >
-      <Container sx={{ height: '100%'}}>
+      <Container>
         <Toolbar
           disableGutters
           sx={{
@@ -85,6 +88,7 @@ function ResponsiveAppBar() {
         </Toolbar>
       </Container>
     </AppBar>
+    </Box>
   );
 }
 export default ResponsiveAppBar;
