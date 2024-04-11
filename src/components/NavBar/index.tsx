@@ -9,9 +9,9 @@ import theme from "../../theme";
 import Dropdown from "./Dropdown";
 import Link from "next/link";
 import { Grid } from "@mui/material";
-import { usePathname } from 'next/navigation'
+import { usePathname } from "next/navigation";
 
-import CssBaseline from '@mui/material/CssBaseline';
+import CssBaseline from "@mui/material/CssBaseline";
 
 const pages = [
   { name: "Discover", route: "/" },
@@ -20,74 +20,76 @@ const pages = [
 // const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
-
   // const router = useRouter();
-  const pathname = usePathname()
+  const pathname = usePathname();
   return (
-    <Box sx={{ display: 'flex' }}>
-    <AppBar
-      // position="fixed"
-      component="nav"
-      sx={{ bgcolor: theme.palette.primary.light }}
-    >
-      <Container>
-        <Toolbar
-          disableGutters
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            // boxShadow: "none",
-            height: "100%",
-          }}
-        >
-          <Grid
-            direction="row"
-            columnSpacing={{ sx: 2, sm: 3, mdg: 3, lg: 5 }}
-            container
+    <Box sx={{ display: "flex" }}>
+      <AppBar
+        position="fixed"
+        // component="nav"
+        sx={{
+          bgcolor: theme.palette.primary.light,
+          width: "100%",
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+        }}
+      >
+        <Toolbar sx={{ minHeight: "64px" }}>
+          <Container
             sx={{
-              justifyContent: "start",
-              alignItems: "center",
+              display: "flex",
+              justifyContent: "space-between",
+              // boxShadow: "none",
+              height: "100%",
             }}
           >
-            <Grid item>
-              <Typography
-                variant="h6"
-                sx={{
-                  mr: 2,
-                  display: { xs: "none", md: "flex" },
-                  fontWeight: 700,
-                  letterSpacing: ".1rem",
-                  color: theme.palette.primary.main,
-                  textDecoration: "none",
-                }}
-              >
-                GAAVEI.
-              </Typography>
-            </Grid>
-            {pages.map((page) => (
-              <Grid item key={page.name}>
-                <Link href={page.route}>
-                  <Typography
-                    variant="h4"
-                    sx={{
-                      display: { xs: "none", md: 'flex', lg: 'flex'},
-                      textDecoration:
-                      pathname === page.route ? "underline" : "none",
-                      fontWeight: pathname === page.route ? "600" : "400",
-                    }}
-                  >
-                    {page.name}
-                  </Typography>
-                </Link>
+            <Grid
+              direction="row"
+              columnSpacing={{ sx: 3, sm: 3, mdg: 3, lg: 5 }}
+              container
+              sx={{
+                justifyContent: "start",
+                alignItems: "center",
+              }}
+            >
+              <Grid item>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    mr: 2,
+                    display: { xs: "flex", sm: 'flex', md: "flex" },
+                    fontWeight: 700,
+                    letterSpacing: ".1rem",
+                    color: theme.palette.primary.main,
+                    textDecoration: "none",
+                  }}
+                >
+                  GAAVEI.
+                </Typography>
               </Grid>
-            ))}
-          </Grid>
-          <Box sx={{ flexGrow: 0 }}>
-            <Dropdown />
-          </Box>
+              {pages.map((page) => (
+                <Grid item key={page.name}>
+                  <Link href={page.route}>
+                    <Typography
+                      variant="h4"
+                      sx={{
+                        display: { xs: "none", sm: 'flex', md: "flex", lg: "flex" },
+                        textDecoration:
+                          pathname === page.route ? "underline" : "none",
+                        fontWeight: pathname === page.route ? "600" : "400",
+                      }}
+                    >
+                      {page.name}
+                    </Typography>
+                  </Link>
+                </Grid>
+              ))}
+            </Grid>
+            <Box sx={{ flexGrow: 0 }}>
+              <Dropdown />
+            </Box>
+          </Container>
         </Toolbar>
-      </Container>
-    </AppBar>
+      </AppBar>
     </Box>
   );
 }

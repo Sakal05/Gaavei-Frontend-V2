@@ -27,15 +27,15 @@ const theme = createTheme({
     },
     h3: {
       // Define style for h2 elements
-      fontSize: "1.25rem",
+      fontSize: "1.5rem",
       fontWeight: 600,
     },
     h4: {
-      fontSize: "1rem",
+      fontSize: "1.25rem",
       fontWeight: 600,
     },
     h5: {
-      fontSize: "0.5rem",
+      fontSize: "0.875rem",
       fontWeight: 300,
     },
     body1: {

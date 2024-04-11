@@ -37,6 +37,7 @@ export default function AccountMenu() {
           display: "flex",
           alignItems: "center",
           textAlign: "center",
+          height: "100%",
         }}
       >
         <Tooltip title="Account Menu">
