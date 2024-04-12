@@ -28,7 +28,7 @@ export default function Portfolio({ balance, growthRate, data }: IPortfolio) {
     >
       <Box>
         <Typography variant="h2" sx={{ marginBottom: "5px" }}>
-          My Portfolio
+          My Earning
         </Typography>
         <Typography
           sx={{

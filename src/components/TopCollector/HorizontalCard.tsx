@@ -24,13 +24,11 @@ export default function HorizontalCard({
   return (
     <Box
       sx={{
-        //   maxWidth: "200px",
-        width: "100%", // Set width to fit 3 articles on one screen
+        width: "100%",
         flexShrink: 0, // Ensure no shrinking when container is resized
         border: "none",
         alignItems: "center",
         borderRadius: "12px",
-        // position: "relative",
         paddingY: "10px",
       }}
     >

@@ -52,19 +52,21 @@ function ResponsiveAppBar() {
               }}
             >
               <Grid item>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    mr: 2,
-                    display: { xs: "flex", sm: 'flex', md: "flex" },
-                    fontWeight: 700,
-                    letterSpacing: ".1rem",
-                    color: theme.palette.primary.main,
-                    textDecoration: "none",
-                  }}
-                >
-                  GAAVEI.
-                </Typography>
+                <Link href="/">
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      mr: 2,
+                      display: { xs: "flex", sm: "flex", md: "flex" },
+                      fontWeight: 700,
+                      letterSpacing: ".1rem",
+                      color: theme.palette.primary.main,
+                      textDecoration: "none",
+                    }}
+                  >
+                    GAAVEI.
+                  </Typography>
+                </Link>
               </Grid>
               {pages.map((page) => (
                 <Grid item key={page.name}>
@@ -72,7 +74,12 @@ function ResponsiveAppBar() {
                     <Typography
                       variant="h4"
                       sx={{
-                        display: { xs: "none", sm: 'flex', md: "flex", lg: "flex" },
+                        display: {
+                          xs: "none",
+                          sm: "flex",
+                          md: "flex",
+                          lg: "flex",
+                        },
                         textDecoration:
                           pathname === page.route ? "underline" : "none",
                         fontWeight: pathname === page.route ? "600" : "400",

@@ -2,7 +2,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Box, Button, CardActionArea, CardActions } from "@mui/material";
 import Chip from "@mui/material/Chip";
-import { ICard } from "@/app/interface/ICard";
+import { ICard } from "@/components/interface/ICard";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import { NoSsr } from "@mui/base/NoSsr";
 import TrendingSkeleton from "../Loading/Trending";

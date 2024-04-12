@@ -6,18 +6,14 @@ import {
   Typography,
 } from "@mui/material";
 import VerifiedIcon from "@mui/icons-material/Verified";
-
-export interface ICollector {
-  address: string;
-  collection_token: number;
-  image_url: string;
-}
+import { IOwnCollection } from "../interface/IOwnCollection";
 
 export default function CollectorCard({
-  address,
-  collection_token,
-  image_url,
-}: ICollector) {
+  tokenId,
+  image,
+  author,
+  title,
+}: IOwnCollection) {
   return (
     <Box
       sx={{
@@ -27,15 +23,15 @@ export default function CollectorCard({
         border: "none",
         borderRadius: "12px",
         position: "relative",
-        paddingX: "10px",
+        marginRight: "10px",
       }}
     >
       <CardActionArea
-        sx={{ position: "relative", width: "100%", height: "250px" }}
+        sx={{ position: "relative", width: "100%", height: "250px"}}
       >
         <CardMedia
           component="img"
-          image={image_url}
+          image={image}
           alt="NFT"
           sx={{
             borderRadius: "12px",
@@ -68,20 +64,19 @@ export default function CollectorCard({
             color: "primary.light",
             zIndex: 2,
             textAlign: "center",
-            paddingY: "30px",
+            paddingY: "20px",
             borderRadius: "12px",
             alignItems: "center",
             display: "flex",
             flexDirection: "column",
             position: "absolute",
-            top: "50%",
+            top: "100%",
             left: "50%",
             transform: "translate(-50%, -50%)",
             width: "100%",
             height: "100%",
           }}
         >
-          <Avatar src={image_url} sx={{ width: 120, height: 120 }} />
           <Box
             width="80%"
             display="flex"
@@ -89,7 +84,7 @@ export default function CollectorCard({
             paddingTop="40px"
           >
             <Typography variant="subtitle2" textAlign={"left"}>
-              Collect {collection_token} tokens
+              {author}
             </Typography>
             <Box
               display="flex"
@@ -99,9 +94,8 @@ export default function CollectorCard({
               flexDirection="row"
             >
               <Typography variant="h4" textAlign="left">
-                {address.slice(0, 10)}...
+                {title}
               </Typography>
-              <VerifiedIcon sx={{ color: "#4182FA" }} />
             </Box>
           </Box>
         </Box>
