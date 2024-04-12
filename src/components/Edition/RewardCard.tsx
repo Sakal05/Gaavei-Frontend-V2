@@ -53,27 +53,15 @@ export default function RewardCard({
       >
         {rewardTitle}
       </Typography>
-      <Typography variant="body1" fontWeight={"regular"} sx={{ pt: "5px" }}>
-        {expanded
-          ? rewardDescription
-          : rewardDescription.length > 100
-          ? rewardDescription.slice(0, 100) + "..."
-          : rewardDescription}
-      </Typography>
-      {expanded ? (
-        <Button
-          variant="text"
-          color="primary"
-          onClick={() => setExpanded(false)}
-        >
-          See less
-        </Button>
-      ) : (
-        <div>
-          {rewardDescription.length > 50
-            ? rewardDescription.slice(0, 50) + "..."
-            : rewardDescription}
-          {rewardDescription.length > 50 && (
+      {rewardDescription.length > 50 ? (
+        <Box sx={{ width: '100%', alignItems: 'flex-start'}}>
+          <Typography variant="body1" fontWeight={"regular"} sx={{ pt: "5px", pl: '6px' }}>
+            {expanded
+              ? rewardDescription
+              : rewardDescription.slice(0, 50) +
+                (rewardDescription.length > 50 && !expanded ? "..." : "")}
+          </Typography>
+          {!expanded && (
             <Button
               variant="text"
               color="primary"
@@ -82,7 +70,20 @@ export default function RewardCard({
               See more
             </Button>
           )}
-        </div>
+          {expanded && (
+            <Button
+              variant="text"
+              color="primary"
+              onClick={() => setExpanded(false)}
+            >
+              See less
+            </Button>
+          )}
+        </Box>
+      ) : (
+        <Typography variant="body1" fontWeight={"regular"} sx={{ pt: "5px" }}>
+          {rewardDescription}
+        </Typography>
       )}
     </Box>
   );

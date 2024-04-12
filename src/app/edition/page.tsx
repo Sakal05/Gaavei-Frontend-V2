@@ -7,15 +7,26 @@ import {
   Divider,
   Grid,
   Typography,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from "@mui/material";
 import MusicCover from "../../components/Edition/MusicCover";
 import { EDITIONDUMMY } from "@/DummyData/EditionData";
-import { useState } from "react";
 import RewardCard from "@/components/Edition/RewardCard";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import React from "react";
+import RevenueSlider from "@/components/Edition/RevenueSlider";
 
 export default function Edition() {
   const DUMMYDATA = EDITIONDUMMY[1];
-  const [expanded, setExpanded] = useState(false);
+  const DUMMYDETAIL = DUMMYDATA.details;
+  const [expanded, setExpanded] = React.useState<string | false>(false);
+
+  const handleChange =
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };
 
   return (
     <Box
@@ -117,7 +128,7 @@ export default function Edition() {
             columnSpacing={{ xs: 2, sm: 2, md: 4, lg: 4 }}
           >
             {DUMMYDATA.rewards.map((reward, index) => (
-              <Grid item xs={12} sm={12} md={6} lg={6} key={index}>
+              <Grid item xs={12} sm={12} md={6} lg={6} key={index} >
                 <RewardCard
                   rewardIcon={reward.rewardIcon}
                   rewardDescription={reward.rewardDescription}
@@ -126,6 +137,35 @@ export default function Edition() {
               </Grid>
             ))}
           </Grid>
+        </Box>
+        <Box sx={{ pt: "30px" }}>
+          <Typography
+            variant="h3"
+            color="primary.main"
+            sx={{ whiteSpace: "nowrap" }}
+          >
+            Incentive Estimation
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              opacity: 0.6,
+            }}
+          >
+            Estimate the revenue earn.
+          </Typography>
+          <Box
+            sx={{
+              width: "100%",
+              margin: "auto",
+              justifyContent: "center",
+              display: "flex",
+              flexDirection: "row",
+              alignItems: 'center'
+            }}
+          >
+            <RevenueSlider />
+          </Box>
         </Box>
         <Box sx={{ pt: "30px" }}>
           <Typography
@@ -143,6 +183,93 @@ export default function Edition() {
           >
             View details of the contracts for this release.{" "}
           </Typography>
+          <Accordion
+            expanded={expanded === "panel1"}
+            onChange={handleChange("panel1")}
+            sx={{ mb: "10px", boxShadow: "none" }}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1-content"
+              id="panel1-header"
+              sx={{
+                m: 0,
+              }}
+            >
+              <Typography variant="subtitle1">Release Date</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography variant="body1">{DUMMYDETAIL.releaseDate}</Typography>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel2"}
+            onChange={handleChange("panel2")}
+            sx={{ mb: "10px", boxShadow: "none" }}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel2-content"
+              id="panel2-header"
+              sx={{
+                m: 0,
+              }}
+            >
+              <Typography variant="subtitle1">Contract Address</Typography>
+            </AccordionSummary>
+            <AccordionDetails>{DUMMYDETAIL.contractAddress}</AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel3"}
+            onChange={handleChange("panel3")}
+            sx={{ mb: "10px", boxShadow: "none" }}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel3-content"
+              id="panel3-header"
+              sx={{
+                m: 0,
+              }}
+            >
+              <Typography variant="subtitle1">Blockchain</Typography>
+            </AccordionSummary>
+            <AccordionDetails>{DUMMYDETAIL.blockchain}</AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel4"}
+            onChange={handleChange("panel4")}
+            sx={{ mb: "10px", boxShadow: "none" }}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel4-content"
+              id="panel4-header"
+              sx={{
+                m: 0,
+              }}
+            >
+              <Typography variant="subtitle1">Token Standard</Typography>
+            </AccordionSummary>
+            <AccordionDetails>{DUMMYDETAIL.tokenStandard}</AccordionDetails>
+          </Accordion>
+          <Accordion
+            expanded={expanded === "panel5"}
+            onChange={handleChange("panel5")}
+            sx={{ mb: "10px", boxShadow: "none" }}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel5-content"
+              id="panel5-header"
+              sx={{
+                m: 0,
+              }}
+            >
+              <Typography variant="subtitle1">Resale Royalty</Typography>
+            </AccordionSummary>
+            <AccordionDetails>{DUMMYDETAIL.resaleRoyalty}</AccordionDetails>
+          </Accordion>
         </Box>
       </Container>
     </Box>
