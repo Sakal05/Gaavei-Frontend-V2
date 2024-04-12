@@ -85,7 +85,7 @@ export default function Edition() {
               color: "primary.dark",
               borderRadius: 3,
               // paddingX: '20px',
-              width: "20%",
+              width: "30%",
             }}
           >
             <Typography variant="button" sx={{ p: 0 }}>
@@ -128,7 +128,7 @@ export default function Edition() {
             columnSpacing={{ xs: 2, sm: 2, md: 4, lg: 4 }}
           >
             {DUMMYDATA.rewards.map((reward, index) => (
-              <Grid item xs={12} sm={12} md={6} lg={6} key={index} >
+              <Grid item xs={12} sm={12} md={6} lg={6} key={index}>
                 <RewardCard
                   rewardIcon={reward.rewardIcon}
                   rewardDescription={reward.rewardDescription}
@@ -144,7 +144,7 @@ export default function Edition() {
             color="primary.main"
             sx={{ whiteSpace: "nowrap" }}
           >
-            Incentive Estimation
+            Incentive Forecast
           </Typography>
           <Typography
             variant="body1"
@@ -152,7 +152,7 @@ export default function Edition() {
               opacity: 0.6,
             }}
           >
-            Estimate the revenue earn.
+            Calculate your incentive
           </Typography>
           <Box
             sx={{
@@ -161,7 +161,7 @@ export default function Edition() {
               justifyContent: "center",
               display: "flex",
               flexDirection: "row",
-              alignItems: 'center'
+              alignItems: "center",
             }}
           >
             <RevenueSlider />
@@ -186,7 +186,7 @@ export default function Edition() {
           <Accordion
             expanded={expanded === "panel1"}
             onChange={handleChange("panel1")}
-            sx={{ mb: "10px", boxShadow: "none" }}
+            sx={{ mb: "0px", boxShadow: "none" }}
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -205,7 +205,7 @@ export default function Edition() {
           <Accordion
             expanded={expanded === "panel2"}
             onChange={handleChange("panel2")}
-            sx={{ mb: "10px", boxShadow: "none" }}
+            sx={{ mb: "0px", boxShadow: "none" }}
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -217,12 +217,14 @@ export default function Edition() {
             >
               <Typography variant="subtitle1">Contract Address</Typography>
             </AccordionSummary>
-            <AccordionDetails>{DUMMYDETAIL.contractAddress}</AccordionDetails>
+            <AccordionDetails sx={{ p: "0px 16px" }}>
+              {DUMMYDETAIL.contractAddress}
+            </AccordionDetails>
           </Accordion>
           <Accordion
             expanded={expanded === "panel3"}
             onChange={handleChange("panel3")}
-            sx={{ mb: "10px", boxShadow: "none" }}
+            sx={{ mb: "0px", boxShadow: "none" }}
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -234,12 +236,14 @@ export default function Edition() {
             >
               <Typography variant="subtitle1">Blockchain</Typography>
             </AccordionSummary>
-            <AccordionDetails>{DUMMYDETAIL.blockchain}</AccordionDetails>
+            <AccordionDetails sx={{ p: "0px 16px" }}>
+              {DUMMYDETAIL.blockchain}
+            </AccordionDetails>
           </Accordion>
           <Accordion
             expanded={expanded === "panel4"}
             onChange={handleChange("panel4")}
-            sx={{ mb: "10px", boxShadow: "none" }}
+            sx={{ mb: "0px", boxShadow: "none" }}
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -251,12 +255,14 @@ export default function Edition() {
             >
               <Typography variant="subtitle1">Token Standard</Typography>
             </AccordionSummary>
-            <AccordionDetails>{DUMMYDETAIL.tokenStandard}</AccordionDetails>
+            <AccordionDetails sx={{ p: "0px 16px" }}>
+              {DUMMYDETAIL.tokenStandard}
+            </AccordionDetails>
           </Accordion>
           <Accordion
             expanded={expanded === "panel5"}
             onChange={handleChange("panel5")}
-            sx={{ mb: "10px", boxShadow: "none" }}
+            sx={{ mb: "0px", boxShadow: "none" }}
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -268,7 +274,9 @@ export default function Edition() {
             >
               <Typography variant="subtitle1">Resale Royalty</Typography>
             </AccordionSummary>
-            <AccordionDetails>{DUMMYDETAIL.resaleRoyalty}</AccordionDetails>
+            <AccordionDetails sx={{ p: "0px 16px" }}>
+              {DUMMYDETAIL.resaleRoyalty}
+            </AccordionDetails>
           </Accordion>
         </Box>
       </Container>

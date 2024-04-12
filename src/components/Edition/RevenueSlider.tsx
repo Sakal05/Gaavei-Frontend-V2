@@ -9,6 +9,7 @@ import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { LineChart } from "@mui/x-charts/LineChart";
+import { Divider } from "@mui/material";
 
 interface AirbnbThumbProps {
   children?: React.ReactNode;
@@ -33,24 +34,26 @@ const PrettoSlider = styled(Slider)({
     },
   },
   "& .MuiSlider-valueLabel": {
-    lineHeight: 1.2,
-    fontSize: 12,
-    background: "unset",
-    padding: 0,
-    width: 32,
-    height: 32,
-    borderRadius: "50% 50% 50% 0",
-    backgroundColor: "#2F2F85",
-    transformOrigin: "bottom left",
-    transform: "translate(50%, -100%) rotate(-45deg) scale(0)",
-    "&::before": { display: "none" },
-    "&.MuiSlider-valueLabelOpen": {
-      transform: "translate(50%, -100%) rotate(-45deg) scale(1)",
-    },
-    "& > *": {
-      transform: "rotate(45deg)",
-    },
-  },
+    backgroundColor: "transparent",
+  }
+  //   lineHeight: 1.2,
+  //   fontSize: 12,
+  //   background: "unset",
+  //   padding: 10,
+  //   width: 32,
+  //   height: 32,
+  //   borderRadius: "50% 50% 50% 0",
+  //   // backgroundColor: "#2F2F85",
+  //   transformOrigin: "bottom left",
+  //   transform: "translate(50%, -100%) rotate(-90deg) scale(0)",
+  //   "&::before": { display: "none" },
+  //   "&.MuiSlider-valueLabelOpen": {
+  //     transform: "translate(50%, -100%) rotate(-45deg) scale(1)",
+  //   },
+  //   "& > *": {
+  //     transform: "rotate(45deg)",
+  //   },
+  // },
 });
 
 function AirbnbThumbComponent(props: AirbnbThumbProps) {
@@ -66,58 +69,54 @@ function AirbnbThumbComponent(props: AirbnbThumbProps) {
 }
 
 export default function RevenueSlider() {
-  const [value, setValue] = React.useState<number>(250);
-  const [rate, setRate] = React.useState<number>(value * 0.02);
+  const [value, setValue] = React.useState<number>(5);
+  const [rate, setRate] = React.useState<number>(value * 0.8);
 
-  const handleChange = (
-    event: Event,
-    newValue: number | number[],
-  ) => {
+  const handleChange = (event: Event, newValue: number | number[]) => {
     // console.log("slider event: ", event);
     // console.log("New value: ", newValue);
     if (typeof newValue === "number") {
       setValue(newValue);
+      setRate(calculateValue(newValue, 0.8));
     }
   };
 
-    const handleCommit = (
-      event: React.SyntheticEvent | Event,
-      newValue: number | number[]
-    ) => {
-      if (typeof newValue === "number") {
-        setValue(newValue);
-        setRate(calculateValue(newValue, 0.002));
-      }
-    };
+  // const handleCommit = (
+  //   event: React.SyntheticEvent | Event,
+  //   newValue: number | number[]
+  // ) => {
+  //   if (typeof newValue === "number") {
+  //     setValue(newValue);
+  //     setRate(calculateValue(newValue, 0.002));
+  //   }
+  // };
 
   const calculateValue = (value: any, rate: number) => {
     const result = value * rate;
     return result;
   };
 
-  const valueLabelFormat = (value: number) => `${value}`;
+  const valueLabelFormat = (value: number) => (
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100%'}}>
+      <Typography variant="h3" color="primary.main">
+        ${`${rate.toFixed(2)}$`}
+      </Typography>
+      <Typography variant="body2" color="primary.main" sx={{ opacity: 0.6}}>
+        Annualized Incentive Est.
+      </Typography>
+      <Typography variant="body1" color="primary.main" sx={{ opacity: 0.6}}>
+      {`${value}M`}
+      </Typography>
+      <Divider orientation="vertical" sx={{ width: "1px", background: "rgba(0, 0, 0, 0.5)", margin: "0 auto" }} />
+    </Box>
+  );
 
-  // Generate line chart data based on the slider range
-  const generateLineChartData = () => {
-    const data = [];
-    for (let i = 0; i <= 100; i += 5) {
-      const rate = calculateValue(i, 0.02);
-      data.push(rate);
-    }
-    return data;
-  };
-
-  // Sample line chart data
-  const lineChartData = {
-    yAxis: [{ data: generateLineChartData() }],
-    series: [{ data: generateLineChartData() }],
-  };
 
   return (
     <Box
       sx={{
         width: "60%",
-        mt: "20px",
+        mt: "80px",
         alignItems: "center",
         display: "flex",
         flexDirection: "column",
@@ -126,45 +125,43 @@ export default function RevenueSlider() {
       <PrettoSlider
         components={{ Thumb: AirbnbThumbComponent }}
         value={value}
-        onChangeCommitted={handleCommit}
+        // onChangeCommitted={handleCommit}
         onChange={handleChange}
         valueLabelDisplay="on"
         // aria-valuetext={value.toString()}
         aria-label="pretto slider"
         defaultValue={250}
         shiftStep={30}
-        step={5}
+        step={0.5}
         marks
         min={0}
-        max={500}
-        getAriaValueText={valueLabelFormat}
+        max={10}
+        valueLabelFormat={valueLabelFormat}
       />
       <Box
         sx={{
-          backgroundColor: "#E7F8FF",
+          // backgroundColor: "#E7F8FF",
           width: "100%",
           borderRadius: "12px",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "space-between",
           display: "flex",
-          flexDirection: "column",
-          p: "30px",
+          flexDirection: "row",
+          pt: '10px'
         }}
       >
-        <Typography variant="h3" color="primary.main">
-          Est. Revenue
+        <Typography variant="h4" color="primary.main" sx={{opacity: 0.6}}>
+          +0
         </Typography>
-        <Typography variant="h3" color="primary.main" sx={{ mt: "10px" }}>
+        <Typography variant="h4" color="primary.main" sx={{opacity: 0.6}}>
+          STREAMS
+        </Typography>
+        <Typography variant="h4" color="primary.main" sx={{opacity: 0.6}}>
+          +10M
+        </Typography>
+        {/* <Typography variant="h3" color="primary.main" sx={{ mt: "10px" }}>
           {rate}% APY
-        </Typography>
-        <LineChart
-          yAxis={lineChartData.yAxis}
-          series={lineChartData.series}
-          leftAxis={{ disableLine: true }}
-          bottomAxis={{ disableTicks: true }}
-          width={500}
-          height={300}
-        />
+        </Typography> */}
       </Box>
     </Box>
   );

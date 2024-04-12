@@ -10,15 +10,15 @@ function Footer() {
         <Grid
           container
           rowSpacing={5}
-          columnSpacing={10}
-          sx={{ margin: "auto", width: "100%", alignItems: "flex-start" }}
+          columnSpacing={0}
+          sx={{ margin: "auto", width: "100%", alignItems: "flex-start", justifyContent: "space-between" }}
         >
           <Grid item sm={12} md={3} lg={3} sx={{ width: "100%" }}>
             <Typography
               variant="h6"
               sx={{
                 mr: 2,
-                display: { xs: "none", md: "flex" },
+                display: { xs: "flex", md: "flex" },
                 fontWeight: 700,
                 letterSpacing: ".1rem",
                 color: "primary.main",
@@ -31,7 +31,7 @@ function Footer() {
           <Grid
             item
             container
-            sm={12}
+            sm={4}
             md={3}
             lg={3}
             rowSpacing={2}
@@ -48,7 +48,7 @@ function Footer() {
           <Grid
             item
             container
-            sm={12}
+            sm={4}
             md={3}
             lg={3}
             rowSpacing={2}
@@ -77,7 +77,7 @@ function Footer() {
           <Grid
             item
             container
-            sm={12}
+            sm={4}
             md={3}
             lg={3}
             rowSpacing={2}
