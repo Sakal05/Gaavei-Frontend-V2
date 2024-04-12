@@ -53,13 +53,13 @@ export default function RewardCard({
       >
         {rewardTitle}
       </Typography>
-      {rewardDescription.length > 50 ? (
+      {rewardDescription.length > 150 ? (
         <Box sx={{ width: '100%', alignItems: 'flex-start'}}>
           <Typography variant="body1" fontWeight={"regular"} sx={{ pt: "5px", pl: '6px' }}>
             {expanded
               ? rewardDescription
-              : rewardDescription.slice(0, 50) +
-                (rewardDescription.length > 50 && !expanded ? "..." : "")}
+              : rewardDescription.slice(0, 150) +
+                (rewardDescription.length > 150 && !expanded ? "..." : "")}
           </Typography>
           {!expanded && (
             <Button
