@@ -15,13 +15,15 @@ import MusicCover from "../../components/Edition/MusicCover";
 import { EDITIONDUMMY } from "@/DummyData/EditionData";
 import RewardCard from "@/components/Edition/RewardCard";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import React from "react";
+import { useState } from "react";
 import RevenueSlider from "@/components/Edition/RevenueSlider";
+import MusicPlayerSlider from "@/components/MusicPlayer";
 
 export default function Edition() {
   const DUMMYDATA = EDITIONDUMMY[1];
   const DUMMYDETAIL = DUMMYDATA.details;
-  const [expanded, setExpanded] = React.useState<string | false>(false);
+  const [expanded, setExpanded] = useState<string | false>(false);
+  const [musicPlay, setMusicPlay] = useState(false);
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -45,6 +47,8 @@ export default function Edition() {
         type={DUMMYDATA.type}
         title={DUMMYDATA.title}
         author={DUMMYDATA.author}
+        setMusicPlay={setMusicPlay}
+        musicPlayed={musicPlay}
       />
       {/* </Box> */}
       <Container
@@ -280,6 +284,20 @@ export default function Edition() {
           </Accordion>
         </Box>
       </Container>
+      <Box
+        display={musicPlay ? "block" : "none"}
+        sx={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          zIndex: 1000, // Adjust as needed
+        }}
+      >
+        <MusicPlayerSlider
+          setMusicPlay={setMusicPlay}
+          musicPlayed={musicPlay}
+        />
+      </Box>
     </Box>
   );
 }

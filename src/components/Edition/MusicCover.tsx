@@ -24,12 +24,24 @@ export interface IMusicCover {
   author: string;
 }
 
+export interface MusicCoverProps extends IMusicCover {
+  setMusicPlay: React.Dispatch<React.SetStateAction<boolean>>;
+  musicPlayed: boolean;
+}
+
 export default function MusicCover({
   image,
   title,
   type,
   author,
-}: IMusicCover) {
+  setMusicPlay,
+  musicPlayed
+}: MusicCoverProps) {
+
+  const handleMusicPlay = () => {
+    setMusicPlay(!musicPlayed);
+  };
+
   return (
     <Box
       sx={{
@@ -154,6 +166,7 @@ export default function MusicCover({
             <StyledIconButton
               aria-label="Play"
               sx={{ color: "primary.light", fontSize: "5rem" }}
+              onClick={() => handleMusicPlay()}
             >
               <PlayCircleIcon fontSize="inherit" />
             </StyledIconButton>
