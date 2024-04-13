@@ -74,8 +74,8 @@ export default function Collector({ contents }: { contents: ICollector[] }) {
       <Modal
         open={open}
         onClose={handlePopUp}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby="Top-Collector"
+        aria-describedby="Most collections of all times"
       >
         <Box
           sx={{

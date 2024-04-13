@@ -18,12 +18,13 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useState } from "react";
 import RevenueSlider from "@/components/Edition/RevenueSlider";
 import MusicPlayerSlider from "@/components/MusicPlayer";
-
+import Checkout from "@/components/PopUpModal/Checkout";
 export default function Edition() {
   const DUMMYDATA = EDITIONDUMMY[1];
   const DUMMYDETAIL = DUMMYDATA.details;
   const [expanded, setExpanded] = useState<string | false>(false);
   const [musicPlay, setMusicPlay] = useState(false);
+  const [isCheckOut, setCheckOut] = useState(false);
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -85,14 +86,15 @@ export default function Edition() {
           <Button
             sx={{
               border: "0.6px solid",
-              borderColor: "primary.dark",
+              borderColor: "primary.main",
               color: "primary.dark",
               borderRadius: 3,
               // paddingX: '20px',
               width: "30%",
             }}
+            onClick={() => setCheckOut(!isCheckOut)}
           >
-            <Typography variant="button" sx={{ p: 0 }}>
+            <Typography variant="button" sx={{ p: 0, color: 'primary.main' }}>
               BUY NOW
             </Typography>
           </Button>
@@ -294,10 +296,23 @@ export default function Edition() {
         }}
       >
         <MusicPlayerSlider
+          image={DUMMYDATA.image}
+          type={DUMMYDATA.type}
+          title={DUMMYDATA.title}
+          author={DUMMYDATA.author}
           setMusicPlay={setMusicPlay}
           musicPlayed={musicPlay}
         />
       </Box>
+        <Checkout 
+          image={DUMMYDATA.image}
+          title={DUMMYDATA.title}
+          author={DUMMYDATA.author}
+          price={DUMMYDATA.price}
+          setCheckOut={setCheckOut}
+          isCheckOut={isCheckOut}
+        />
+        
     </Box>
   );
 }

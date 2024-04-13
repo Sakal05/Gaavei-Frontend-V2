@@ -12,6 +12,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ShareIcon from "@mui/icons-material/Share";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import { styled } from "@mui/system";
+import { useRouter } from 'next/navigation'
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.primary,
@@ -38,6 +39,7 @@ export default function MusicCover({
   musicPlayed
 }: MusicCoverProps) {
 
+  const router = useRouter();
   const handleMusicPlay = () => {
     setMusicPlay(!musicPlayed);
   };
@@ -99,6 +101,7 @@ export default function MusicCover({
           <StyledIconButton
             aria-label="Go back"
             sx={{ color: "primary.light", fontSize: "2rem" }}
+            onClick={() => router.back()}
           >
             <ArrowBackIcon fontSize="inherit" />
           </StyledIconButton>

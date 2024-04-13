@@ -12,7 +12,7 @@ import FastRewindRounded from "@mui/icons-material/FastRewindRounded";
 import VolumeUpRounded from "@mui/icons-material/VolumeUpRounded";
 import VolumeDownRounded from "@mui/icons-material/VolumeDownRounded";
 import { CloseRounded } from "@mui/icons-material";
-import { IMusicPlayer } from "../interface/MusicCard";
+import { MusicCoverProps } from "../interface/MusicCard";
 
 const WallPaper = styled("div")({
   position: "absolute",
@@ -55,8 +55,7 @@ const Widget = styled("div")(({ theme }) => ({
   margin: "auto",
   position: "relative",
   zIndex: 1,
-  backgroundColor:
-    theme.palette.mode === "dark" ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.4)",
+  backgroundColor: "rgba(255,255,255,0.6)",
   backdropFilter: "blur(40px)",
 }));
 
@@ -70,6 +69,8 @@ const CoverImage = styled("div")({
   backgroundColor: "rgba(0,0,0,0.08)",
   "& > img": {
     width: "100%",
+    height: "100%", // Adjusted height to fill the container
+    objectFit: "cover",
   },
 });
 
@@ -81,9 +82,12 @@ const TinyText = styled(Typography)({
 });
 
 export default function MusicPlayerSlider({
+  image,
+  title,
+  author,
   setMusicPlay,
   musicPlayed,
-}: IMusicPlayer) {
+}: MusicCoverProps) {
   const theme = useTheme();
   const duration = 200; // seconds
   const [position, setPosition] = React.useState(32);
@@ -107,8 +111,8 @@ export default function MusicPlayerSlider({
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <CoverImage>
             <img
-              alt="can't win - Chilling Sunday"
-              src="/static/images/sliders/chilling-sunday.jpg"
+              alt={title}
+              src={image}
             />
           </CoverImage>
 
@@ -118,14 +122,14 @@ export default function MusicPlayerSlider({
               color="text.secondary"
               fontWeight={500}
             >
-              Jun Pulse
+              {author}
             </Typography>
-            <Typography noWrap>
-              <b>คนเก่าเขาทำไว้ดี (Can&apos;t win)</b>
+            <Typography noWrap fontWeight='bold'>
+              {title}
             </Typography>
-            <Typography noWrap letterSpacing={-0.25}>
+            {/* <Typography noWrap letterSpacing={-0.25}>
               Chilling Sunday &mdash; คนเก่าเขาทำไว้ดี
-            </Typography>
+            </Typography> */}
           </Box>
           <IconButton
             sx={{ position: "absolute", top: "0", right: "0", m: "5px" }}
