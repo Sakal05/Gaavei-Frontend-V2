@@ -10,8 +10,17 @@ import Portfolio from "@/components/Portfolio";
 import Release from "@/components/ReleaseComponent";
 import Trending from "@/components/Trending";
 import { Container } from "@mui/material";
+import { WalletOptions } from "@/components/WalletConnection/WalletOption";
+import { Account } from "@/components/WalletConnection/Account";
+import { useAccount } from "wagmi";
 
 export default function Home() {
+  // const { isConnected } = useAccount();
+
+  // function ConnectWallet() {
+  //   if (!isConnected) return <Account />;
+  //   return <WalletOptions/>
+  // }
   return (
     <Box
       sx={{
@@ -54,7 +63,7 @@ export default function Home() {
             <Release releaseTitle="Local Release" content={NEWRELEASEDATA} />
           </Grid>
           <Grid item xs={12} sm={12} lg={12}>
-            <Collector contents={COLLECTOR_DATA}/>
+            <Collector contents={COLLECTOR_DATA} />
           </Grid>
           <Grid item xs={12} sm={12} lg={12}>
             <Learn contents={ArticleData} />

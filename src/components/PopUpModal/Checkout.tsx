@@ -14,6 +14,7 @@ import ICheckout from "../interface/ICheckout";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ConfirmationModal from "./Confirmation";
+import Confirmation from "./Confirmation";
 
 export default function Checkout({
   image,
@@ -197,31 +198,7 @@ export default function Checkout({
         </Box>
       </Modal>
       {proceed == true && (
-        <Modal
-          open={proceed}
-          onClose={handleConfirm}
-          aria-labelledby="Top-Collector"
-          aria-describedby="Most collections of all times"
-        >
-          <Box
-            sx={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              width: "80%", // Adjust modal width as needed
-              maxWidth: "500px", // Set max width for modal content
-              maxHeight: "80%", // Set max height for modal content
-              overflow: "auto",
-              bgcolor: "background.paper",
-              borderRadius: "12px",
-              boxShadow: 24,
-              p: 4,
-            }}
-          >
-            Are you sure about that?
-          </Box>
-        </Modal>
+        <Confirmation isOpen={proceed} setOpen={handleConfirm} />
       )}
     </>
   );

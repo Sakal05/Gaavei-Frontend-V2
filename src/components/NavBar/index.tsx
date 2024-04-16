@@ -8,10 +8,10 @@ import Container from "@mui/material/Container";
 import theme from "../../theme";
 import Dropdown from "./Dropdown";
 import Link from "next/link";
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { usePathname } from "next/navigation";
-
-import CssBaseline from "@mui/material/CssBaseline";
+import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from "wagmi";
+import { Connector, useConnect } from "wagmi";
 
 const pages = [
   { name: "Discover", route: "/" },
@@ -22,6 +22,12 @@ const pages = [
 function ResponsiveAppBar() {
   // const router = useRouter();
   const pathname = usePathname();
+  const { connectors, connect } = useConnect();
+  const connector = connectors[0];
+  const { address, isConnected } = useAccount();
+  const { data: ensName } = useEnsName({ address });
+  const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
+
   return (
     <Box sx={{ display: "flex" }}>
       <AppBar
@@ -72,17 +78,17 @@ function ResponsiveAppBar() {
                 <Grid item key={page.name}>
                   <Link href={page.route}>
                     <Typography
-                      variant="h4"
                       sx={{
                         display: {
                           xs: "none",
                           sm: "flex",
                           md: "flex",
                           lg: "flex",
+                          fontSize: "16px",
                         },
                         textDecoration:
                           pathname === page.route ? "underline" : "none",
-                        fontWeight: pathname === page.route ? "600" : "400",
+                        fontWeight: pathname === page.route ? "600" : "300",
                       }}
                     >
                       {page.name}
@@ -92,7 +98,17 @@ function ResponsiveAppBar() {
               ))}
             </Grid>
             <Box sx={{ flexGrow: 0 }}>
-              <Dropdown />
+              {
+                isConnected ? (
+                  <Dropdown />
+                ) : (
+                  <Button onClick={() => connect({ connector })}>
+                    <Typography variant='button'>
+                      Connect Wallet
+                    </Typography>
+                  </Button>
+                )
+              }
             </Box>
           </Container>
         </Toolbar>

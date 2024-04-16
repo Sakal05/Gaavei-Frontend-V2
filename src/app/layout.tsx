@@ -6,7 +6,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
 import ResponsiveAppBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-
+import AuthLayout from "@/components/AuthLayout";
 export const metadata: Metadata = {
   title: "GAAVEI",
   description: "Ok",
@@ -21,11 +21,13 @@ export default function RootLayout({
     <html lang="en">
       <body className="py-0">
         <AppRouterCacheProvider options={{ key: "css" }}>
-          <ThemeProvider theme={theme}>
-          <ResponsiveAppBar />
-              {children}
-          <Footer/>
-          </ThemeProvider>
+            <ThemeProvider theme={theme}>
+              <AuthLayout>
+                <ResponsiveAppBar />
+                {children}
+                <Footer />
+              </AuthLayout>
+            </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

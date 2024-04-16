@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
@@ -14,7 +16,8 @@ import AutoGraphOutlinedIcon from "@mui/icons-material/AutoGraphOutlined";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import Grid from "@mui/material/Grid";
 import theme from "../../theme";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import { useRouter } from "next/navigation";
+import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from "wagmi";
 
 const userInfo = {
   fullname: "Sakal Samanng",
@@ -27,9 +30,19 @@ export default function AccountMenu() {
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
+  const router = useRouter();
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const { disconnect } = useDisconnect();
+  const { address, isConnected } = useAccount();
+  const { data: ensName } = useEnsName({ address });
+  const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
+
+  if (!isConnected) {
+    return null;
+  }
+
   return (
     <React.Fragment>
       <Box
@@ -49,10 +62,15 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar
+            {/* <Avatar
               alt="Remy Sharp"
               src="https://plus.unsplash.com/premium_photo-1687609112015-23bcdb2385f4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            />
+            /> */}
+            {ensAvatar ? (
+              <Avatar alt="Remy Sharp" src={ensAvatar} />
+            ) : (
+              <Avatar alt="Remy Sharp" src="R" />
+            )}
           </IconButton>
         </Tooltip>
       </Box>
@@ -96,19 +114,20 @@ export default function AccountMenu() {
         <MenuItem onClick={handleClose} sx={{ color: "primary.dark" }}>
           <Grid container sx={{ display: "flex", alignItems: "center" }}>
             <Grid item>
-              <Avatar
-                alt="Remy Sharp"
-                src="https://plus.unsplash.com/premium_photo-1687609112015-23bcdb2385f4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              />
+              {ensAvatar ? (
+                <Avatar alt="Remy Sharp" src={ensAvatar} />
+              ) : (
+                <Avatar alt="Remy Sharp" src="R" />
+              )}
             </Grid>
 
             <Grid item sx={{ maxWidth: "80%", overflowWrap: "break-word" }}>
               {/* <Typography variant="subtitle1">{userInfo.fullname}</Typography> */}
-              <Typography variant="subtitle1">
-                {`${userInfo.address.slice(0, 6)}...${userInfo.address.slice(
-                  -5
-                )}`}
-              </Typography>
+              {address && (
+                <Typography variant="subtitle1" noWrap>
+                  {ensName ? `${ensName} (${address})` : `${address}`}
+                </Typography>
+              )}
             </Grid>
           </Grid>
         </MenuItem>
@@ -119,7 +138,11 @@ export default function AccountMenu() {
         </MenuItem>
 
         <Divider />
-        <MenuItem onClick={handleClose}>
+        <MenuItem
+          onClick={() => {
+            router.push("/profile");
+          }}
+        >
           <ListItemIcon>
             <AccountCircleOutlinedIcon
               fontSize="medium"
@@ -128,7 +151,11 @@ export default function AccountMenu() {
           </ListItemIcon>
           <Typography variant="subtitle1">Profile</Typography>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem
+          onClick={() => {
+            router.push("/portfolio");
+          }}
+        >
           <ListItemIcon>
             <AutoGraphOutlinedIcon
               fontSize="medium"
@@ -137,17 +164,8 @@ export default function AccountMenu() {
           </ListItemIcon>
           <Typography variant="subtitle1">Earning</Typography>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <SettingsOutlinedIcon
-              fontSize="medium"
-              sx={{ color: "primary.dark" }}
-            />
-          </ListItemIcon>
-          <Typography variant="subtitle1">Setting</Typography>
-        </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => disconnect()}>
           <ListItemIcon>
             <LogoutOutlinedIcon
               fontSize="medium"
