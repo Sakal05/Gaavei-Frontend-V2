@@ -17,12 +17,15 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import Grid from "@mui/material/Grid";
 import theme from "../../theme";
 import { useRouter } from "next/navigation";
-import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from "wagmi";
-
-const userInfo = {
-  fullname: "Sakal Samanng",
-  address: "0x1234567890987654321",
-};
+import {
+  useAccount,
+  useBalance,
+  useDisconnect,
+  useEnsAvatar,
+  useEnsName,
+} from "wagmi";
+import { config } from "@/wagmiconfig";
+import { formatUnits } from "viem";
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -38,6 +41,11 @@ export default function AccountMenu() {
   const { address, isConnected } = useAccount();
   const { data: ensName } = useEnsName({ address });
   const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
+  const balance = useBalance({
+    address,
+    config,
+  });
+
 
   if (!isConnected) {
     return null;
@@ -108,7 +116,10 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose} sx={{ color: "primary.dark" }}>
+        <MenuItem
+          onClick={() => router.push("/profile")}
+          sx={{ color: "primary.dark" }}
+        >
           <Grid container sx={{ display: "flex", alignItems: "center" }}>
             <Grid item>
               {ensAvatar ? (
@@ -129,8 +140,21 @@ export default function AccountMenu() {
           </Grid>
         </MenuItem>
         <Divider />
-        <MenuItem sx={{ display: "block" }}>
-          <Typography variant="subtitle1">0.00 ETH</Typography>
+        <MenuItem
+          sx={{ display: "block" }}
+          onClick={() => {
+            router.push("/profile");
+          }}
+        >
+          <Typography variant="subtitle1">
+            {balance?.data?.value
+              ? `${formatUnits(
+                  balance.data!.value,
+                  balance.data!.decimals
+                ).slice(0, 5)}`
+              : "0.00"}{" "}
+            ETH
+          </Typography>
           <Typography variant="subtitle2">Wallet Balance</Typography>
         </MenuItem>
 
@@ -166,10 +190,12 @@ export default function AccountMenu() {
           <ListItemIcon>
             <LogoutOutlinedIcon
               fontSize="medium"
-              sx={{ color: "primary.dark" }}
+              sx={{ color: "error.main" }}
             />
           </ListItemIcon>
-          <Typography variant="subtitle1">Logout</Typography>
+          <Typography variant="subtitle1" color="error.main">
+            Disconnect
+          </Typography>
         </MenuItem>
       </Menu>
     </React.Fragment>

@@ -13,19 +13,28 @@ import ShareIcon from "@mui/icons-material/Share";
 import { styled } from "@mui/system";
 import { useRouter } from "next/navigation";
 import { IProfile } from "../interface/IProfile";
-
+import {
+  useAccount,
+  useBalance,
+  useDisconnect,
+  useEnsAvatar,
+  useEnsName,
+} from "wagmi";
+import { config } from "@/wagmiconfig";
+import { formatUnits } from "viem";
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.primary,
 }));
 
 export default function Cover({
   address,
+  balance,
   role,
   tokens,
-  balance,
   collections,
 }: IProfile) {
   const router = useRouter();
+ 
 
   return (
     <Box

@@ -53,7 +53,7 @@ export default function Portfolio({ balance, growthRate, data }: IPortfolio) {
       <Box
         sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
       >
-        <Link href="/">
+        <Link href="/portfolio">
           <Typography variant="button" color="blue">
             View Portfolio
           </Typography>

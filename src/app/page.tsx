@@ -10,17 +10,9 @@ import Portfolio from "@/components/Portfolio";
 import Release from "@/components/ReleaseComponent";
 import Trending from "@/components/Trending";
 import { Container } from "@mui/material";
-import { WalletOptions } from "@/components/WalletConnection/WalletOption";
-import { Account } from "@/components/WalletConnection/Account";
-import { useAccount } from "wagmi";
 
 export default function Home() {
-  // const { isConnected } = useAccount();
 
-  // function ConnectWallet() {
-  //   if (!isConnected) return <Account />;
-  //   return <WalletOptions/>
-  // }
   return (
     <Box
       sx={{

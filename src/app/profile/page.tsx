@@ -1,4 +1,4 @@
-import Header from "@/components/Portfolio/Header";
+"use client";
 import {
   Box,
   Button,
@@ -6,13 +6,65 @@ import {
   Divider,
   Grid,
   Typography,
+  Skeleton,
+  Stack,
 } from "@mui/material";
 import { DataSet } from "@/DummyData/PortfolioData";
 import Collection from "@/components/Portfolio/Collection";
 import { OwnCollectionData } from "@/DummyData/OwnCollectionData";
 import Cover from "@/components/Profile/Cover";
+import {
+  useAccount,
+  useBalance,
+  useDisconnect,
+  useEnsAvatar,
+  useEnsName,
+} from "wagmi";
+import { config } from "@/wagmiconfig";
+import { formatUnits } from "viem";
 
 export default function Profile() {
+  const { address, isConnected } = useAccount();
+  const { data: ensName } = useEnsName({ address });
+  const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
+  const balance = useBalance({
+    address,
+    config,
+  });
+
+  if (!isConnected) {
+    return (
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "65px",
+        }}
+      >
+        <Container
+          maxWidth="lg"
+          sx={{
+            // marginTop: "20px",
+            // height: "100%",
+            // width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            // gap: "2px",
+          }}
+        >
+          <Skeleton animation="wave" width='100%' height='150px'/>
+          <Skeleton variant="circular" width={80} height={80} />
+          <Skeleton animation="wave" width='100%' height='50px'/>
+          <Skeleton animation="wave" height='150px'/>
+
+        </Container>
+      </Box>
+    );
+  }
+
   return (
     <Box
       sx={{
@@ -26,10 +78,17 @@ export default function Profile() {
       }}
     >
       <Cover
-        address={"0x123123123"}
+        address={`${address}`}
         role={"Artist"}
         tokens={"100"}
-        balance={"0.05 BNB"}
+        balance={
+          balance?.data?.value
+            ? `${formatUnits(balance.data!.value, balance.data!.decimals).slice(
+                0,
+                5
+              )}`
+            : "0.00"
+        }
         collections={null}
       />
       <Container
@@ -40,7 +99,7 @@ export default function Profile() {
           // width: "100%",
           display: "flex",
           flexDirection: "column",
-          gap: '24px',
+          gap: "24px",
         }}
       >
         <Box
@@ -66,7 +125,7 @@ export default function Profile() {
         </Box>
         <Typography
           variant="h3"
-          sx={{ color: "primary.main", textAlign: 'left' }}
+          sx={{ color: "primary.main", textAlign: "left" }}
         >
           MY COLLECTIONS
         </Typography>
