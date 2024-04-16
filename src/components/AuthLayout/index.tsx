@@ -1,9 +1,9 @@
 "use client";
-import "../../app/globals.css";
 import { WagmiProvider } from "wagmi";
 import { config } from "../../wagmiconfig";
+import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-// import { AppProps } from "next/app";
 
 const queryClient = new QueryClient();
 
@@ -15,7 +15,7 @@ export default function AuthLayout({
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        {children}
+        <RainbowKitProvider modalSize="compact">{children}</RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

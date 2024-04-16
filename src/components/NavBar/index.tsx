@@ -8,25 +8,25 @@ import Container from "@mui/material/Container";
 import theme from "../../theme";
 import Dropdown from "./Dropdown";
 import Link from "next/link";
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, Modal } from "@mui/material";
 import { usePathname } from "next/navigation";
 import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from "wagmi";
 import { Connector, useConnect } from "wagmi";
+import CustomConnectButton from "../WalletConnection/WalletOption";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const pages = [
   { name: "Discover", route: "/" },
   { name: "Portfolio", route: "/portfolio" },
 ];
-// const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
-  // const router = useRouter();
   const pathname = usePathname();
   const { connectors, connect } = useConnect();
   const connector = connectors[0];
   const { address, isConnected } = useAccount();
   const { data: ensName } = useEnsName({ address });
-  const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
+  const [connectionOpen, setConnectionOpen] = React.useState(false);
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -44,6 +44,9 @@ function ResponsiveAppBar() {
             sx={{
               display: "flex",
               justifyContent: "space-between",
+              width: "100%",
+              flexDirection: "row",
+              marign: "auto",
               // boxShadow: "none",
               height: "100%",
             }}
@@ -97,18 +100,15 @@ function ResponsiveAppBar() {
                 </Grid>
               ))}
             </Grid>
-            <Box sx={{ flexGrow: 0 }}>
-              {
-                isConnected ? (
-                  <Dropdown />
-                ) : (
-                  <Button onClick={() => connect({ connector })}>
-                    <Typography variant='button'>
-                      Connect Wallet
-                    </Typography>
-                  </Button>
-                )
-              }
+            <Box
+              sx={{
+                flexGrow: 0,
+                width: "30%",
+                margin: "auto",
+                justifyContent: "flex-end",
+              }}
+            >
+              {isConnected ? <Dropdown /> : <CustomConnectButton />}
             </Box>
           </Container>
         </Toolbar>
