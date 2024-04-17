@@ -39,9 +39,11 @@ const CustomConnectButton = () => {
                   <Button
                     sx={{
                       width: "100%",
-                      color: "primary.dark",
-                      borderRadius: "12px",
-                      px: '12px',
+                      borderColor: "primary.main",
+                      borderWidth: "1px",
+                      borderStyle: "solid", // Adding border style
+                      borderRadius: "8px",
+                      px: "8px",
                     }}
                     onClick={openConnectModal}
                   >
@@ -57,7 +59,7 @@ const CustomConnectButton = () => {
                       width: "100%",
                       color: "primary.dark",
                       borderRadius: "12px",
-                      px: '12px',
+                      px: "12px",
                     }}
                     onClick={openChainModal}
                   >
@@ -72,7 +74,7 @@ const CustomConnectButton = () => {
                     width: "100%",
                     color: "primary.dark",
                     borderRadius: "12px",
-                    px: '12px',
+                    px: "12px",
                   }}
                   onClick={openAccountModal}
                 >

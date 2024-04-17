@@ -13,10 +13,11 @@ import {
 } from "@rainbow-me/rainbowkit/wallets";
 
 const { wallets } = getDefaultWallets();
+const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
 
 export const config = getDefaultConfig({
   appName: "GAAVIE APP",
-  projectId: "0b4078b6aa243a1248f987b26b2d8ba9",
+  projectId: projectId ? projectId : '',
   chains: [
     sepolia,
     morphSepolia,
