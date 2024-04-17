@@ -27,7 +27,7 @@ export default function Portfolio({ balance, growthRate, data }: IPortfolio) {
       }}
     >
       <Box>
-        <Typography variant="h2" sx={{ marginBottom: "5px" }}>
+        <Typography variant="h2" fontWeight='bold' color="primary.main" sx={{ marginBottom: "5px" }}>
           My Earning
         </Typography>
         <Typography
@@ -41,8 +41,8 @@ export default function Portfolio({ balance, growthRate, data }: IPortfolio) {
           Last 30 days
         </Typography>
         <Box sx={{ display: "flex", alignItems: "center", margin: "auto" }}>
-          <Typography variant="h2" paddingRight="10px">
-            $ {balance}
+          <Typography variant="h2" color="green" paddingRight="10px">
+            + ${balance}
           </Typography>
           <TrendingUpIcon fontSize="large" sx={{ opacity: "0.6" }} />
           <Typography variant="h2" sx={{ opacity: "0.6" }} paddingLeft="10px">

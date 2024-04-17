@@ -29,6 +29,7 @@ import { formatUnits } from "viem";
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [isMounted, setIsMounted] = React.useState(false);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -48,6 +49,14 @@ export default function AccountMenu() {
 
 
   if (!isConnected) {
+    return null;
+  }
+
+  React.useEffect(() => {
+      setIsMounted(true);
+  }, [])
+
+  if(!isMounted) {
     return null;
   }
 

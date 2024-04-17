@@ -30,6 +30,7 @@ export default function Header({ balance, growthRate, data }: IPortfolio) {
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <Typography
           variant="h3"
+          fontWeight="bold"
           sx={{ marginBottom: "5px", color: "primary.main" }}
         >
           PORTFOLIO ANALYSIS

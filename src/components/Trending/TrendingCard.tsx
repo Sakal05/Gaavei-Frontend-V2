@@ -1,3 +1,5 @@
+'use client';
+
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Box, Button, CardActionArea, CardActions } from "@mui/material";
@@ -6,6 +8,7 @@ import { ICard } from "@/components/interface/ICard";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import { NoSsr } from "@mui/base/NoSsr";
 import TrendingSkeleton from "../Loading/Trending";
+import { useRouter} from 'next/navigation';
 
 function TrendingCard({
   image,
@@ -18,6 +21,7 @@ function TrendingCard({
   tier,
   price,
 }: ICard) {
+  const router = useRouter();
   return (
     <NoSsr fallback={<TrendingSkeleton />}>
       <Box
@@ -28,7 +32,7 @@ function TrendingCard({
           position: "relative",
         }}
       >
-        <CardActionArea>
+        <CardActionArea onClick={() => { router.push(`/edition/${tokenId}`) }}>
           <Box
             sx={{
               height: 200, // Adjust the image height as needed
@@ -136,6 +140,7 @@ function TrendingCard({
           </Box>
           <Button
             // variant="outlined"
+            onClick={() => { router.push(`/edition/${tokenId}`) }}
             sx={{
               border: "0.6px solid",
               borderColor: "primary.dark",

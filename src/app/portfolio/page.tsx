@@ -35,6 +35,7 @@ export default function Portfolio() {
         <Header balance={"7.79"} growthRate={"7.75"} data={DataSet} />
         <Typography
           variant="h3"
+          fontWeight="bold"
           sx={{ marginBottom: "25px", color: "primary.main" }}
         >
           MY COLLECTIONS

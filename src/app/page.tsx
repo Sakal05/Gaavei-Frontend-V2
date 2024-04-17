@@ -28,7 +28,7 @@ export default function Home() {
       <Container maxWidth="lg">
         <Grid
           container
-          rowSpacing={3}
+          rowSpacing={4}
           // paddingX={'5%'}
           paddingTop="40px"
           sx={{

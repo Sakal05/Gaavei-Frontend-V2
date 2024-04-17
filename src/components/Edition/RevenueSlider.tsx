@@ -98,7 +98,7 @@ export default function RevenueSlider() {
 
   const valueLabelFormat = (value: number) => (
     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100%'}}>
-      <Typography variant="h3" color="primary.main">
+      <Typography variant="h3" fontWeight='bold' color="primary.main">
         ${`${rate.toFixed(2)}$`}
       </Typography>
       <Typography variant="body2" color="primary.main" sx={{ opacity: 0.6}}>

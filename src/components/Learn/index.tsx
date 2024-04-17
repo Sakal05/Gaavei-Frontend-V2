@@ -26,7 +26,7 @@ function Learn({ contents }: { contents: IArticle[] }) {
         position: "relative", // Set position relative for absolute positioning of buttons
       }}
     >
-      <Typography variant="h3" sx={{ marginBottom: "20px" }}>
+      <Typography variant="h3" fontWeight='bold' color="primary.main" sx={{ marginBottom: "20px" }}>
         Learn
       </Typography>
       <Chip

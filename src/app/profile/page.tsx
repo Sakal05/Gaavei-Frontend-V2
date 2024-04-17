@@ -125,6 +125,7 @@ export default function Profile() {
         </Box>
         <Typography
           variant="h3"
+          fontWeight="bold"
           sx={{ color: "primary.main", textAlign: "left" }}
         >
           MY COLLECTIONS

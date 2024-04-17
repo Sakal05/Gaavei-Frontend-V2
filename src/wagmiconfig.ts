@@ -11,13 +11,12 @@ import {
   trustWallet,
   ledgerWallet,
 } from "@rainbow-me/rainbowkit/wallets";
-import { createStorage } from 'wagmi'
 
 const { wallets } = getDefaultWallets();
 
 export const config = getDefaultConfig({
   appName: "GAAVIE APP",
-  projectId: "123567",
+  projectId: "0b4078b6aa243a1248f987b26b2d8ba9",
   chains: [
     sepolia,
     morphSepolia,
@@ -37,5 +36,5 @@ export const config = getDefaultConfig({
     [sepolia.id]: http(),
     [morphSepolia.id]: http(),
   },
-  // ssr: true,
+  ssr: true,
 });

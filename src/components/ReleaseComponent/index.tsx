@@ -25,7 +25,7 @@ export default function NewRelease({ releaseTitle, content }: IRelease) {
         // alignItems: "center",
       }}
     >
-      <Typography variant="h3" sx={{ marginBottom: "20px" }}>
+      <Typography variant="h3" fontWeight='bold' color="primary.main" sx={{ marginBottom: "20px" }}>
         {releaseTitle}
       </Typography>
       <Grid

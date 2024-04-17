@@ -19,6 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+      <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+
+      </head>
       <body className="py-0">
         <AppRouterCacheProvider options={{ key: "css" }}>
             <ThemeProvider theme={theme}>

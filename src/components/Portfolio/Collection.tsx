@@ -22,7 +22,7 @@ export default function Collection({
     >
       <Grid container direction='row' rowSpacing={{ xs:2, sm: 2, md: 3, lg: 3 }} columnSpacing={{ xs: 2, sm: 2, md: 3, lg: 3}}>
         {contents.map((data, index) => (
-          <Grid item xs={6} sm={4} md={3} lg={2} sx={{ width: '100%'}} >
+          <Grid key={index} item xs={6} sm={4} md={3} lg={2} sx={{ width: '100%'}}>
             <CollectionCard
               key={index}
               tokenId={data.tokenId}

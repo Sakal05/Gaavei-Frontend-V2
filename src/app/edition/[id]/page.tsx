@@ -11,16 +11,68 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "@mui/material";
-import MusicCover from "../../components/Edition/MusicCover";
+import { useEffect, useState } from "react";
+import MusicCover from "../../../components/Edition/MusicCover";
 import { EDITIONDUMMY } from "@/DummyData/EditionData";
 import RewardCard from "@/components/Edition/RewardCard";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useState } from "react";
 import RevenueSlider from "@/components/Edition/RevenueSlider";
 import MusicPlayerSlider from "@/components/MusicPlayer";
 import Checkout from "@/components/PopUpModal/Checkout";
-export default function Edition() {
-  const DUMMYDATA = EDITIONDUMMY[1];
+import { useRouter } from "next/router";
+
+type EditionParam = {
+  id: string;
+};
+
+interface Props {
+  params: EditionParam;
+}
+const Edition: React.FC<Props> = ({ params }) => {
+  if (!params || typeof params.id !== "string") {
+    return <div>Error: Invalid parameters</div>;
+  }
+
+  console.log(params.id);
+  const id = params.id;
+  const DUMMYDATA = EDITIONDUMMY[parseInt(id)];
+  // Check if data exists
+  if (isNaN(parseInt(id))) {
+    console.log("here");
+    return (
+      <Box
+        sx={{
+          width: "100%",
+          margin: "auto", // Adjusted to center the content
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "65px",
+        }}
+      >
+        <Typography variant='h4' fontWeight='medium' sx={{ pt: '15px'}}>Data not found</Typography>
+      </Box>
+    );
+  }
+
+  if (!DUMMYDATA) {
+    return (
+      <Box
+        sx={{
+          width: "100%",
+          margin: "auto", // Adjusted to center the content
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "65px",
+        }}
+      >
+        <Typography variant='h4' fontWeight='medium' sx={{ pt: '15px'}}>Data not found</Typography>
+      </Box>
+    );
+  }
   const DUMMYDETAIL = DUMMYDATA.details;
   const [expanded, setExpanded] = useState<string | false>(false);
   const [musicPlay, setMusicPlay] = useState(false);
@@ -42,7 +94,6 @@ export default function Edition() {
         alignItems: "center",
       }}
     >
-      {/* <Box height={"20%"}> */}
       <MusicCover
         image={DUMMYDATA.image}
         type={DUMMYDATA.type}
@@ -51,7 +102,6 @@ export default function Edition() {
         setMusicPlay={setMusicPlay}
         musicPlayed={musicPlay}
       />
-      {/* </Box> */}
       <Container
         maxWidth="lg"
         sx={{
@@ -94,7 +144,7 @@ export default function Edition() {
             }}
             onClick={() => setCheckOut(!isCheckOut)}
           >
-            <Typography variant="button" sx={{ p: 0, color: 'primary.main' }}>
+            <Typography variant="button" sx={{ p: 0, color: "primary.main" }}>
               BUY NOW
             </Typography>
           </Button>
@@ -103,6 +153,7 @@ export default function Edition() {
         <Box>
           <Typography
             variant="h3"
+            fontWeight="bold"
             color="primary.main"
             sx={{ whiteSpace: "nowrap" }}
           >
@@ -114,6 +165,7 @@ export default function Edition() {
           <Typography
             variant="h3"
             color="primary.main"
+            fontWeight="bold"
             sx={{ whiteSpace: "nowrap" }}
           >
             Reward
@@ -148,6 +200,7 @@ export default function Edition() {
           <Typography
             variant="h3"
             color="primary.main"
+            fontWeight="bold"
             sx={{ whiteSpace: "nowrap" }}
           >
             Incentive Forecast
@@ -176,6 +229,7 @@ export default function Edition() {
         <Box sx={{ pt: "30px" }}>
           <Typography
             variant="h3"
+            fontWeight="bold"
             color="primary.main"
             sx={{ whiteSpace: "nowrap" }}
           >
@@ -304,15 +358,16 @@ export default function Edition() {
           musicPlayed={musicPlay}
         />
       </Box>
-        <Checkout 
-          image={DUMMYDATA.image}
-          title={DUMMYDATA.title}
-          author={DUMMYDATA.author}
-          price={DUMMYDATA.price}
-          setCheckOut={setCheckOut}
-          isCheckOut={isCheckOut}
-        />
-        
+      <Checkout
+        image={DUMMYDATA.image}
+        title={DUMMYDATA.title}
+        author={DUMMYDATA.author}
+        price={DUMMYDATA.price}
+        setCheckOut={setCheckOut}
+        isCheckOut={isCheckOut}
+      />
     </Box>
   );
-}
+};
+
+export default Edition;

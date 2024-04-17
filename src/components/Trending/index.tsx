@@ -20,7 +20,7 @@ export default function Trending({ contents }: { contents: ICard[] }) {
         // alignItems: "center",
       }}
     >
-      <Typography variant="h3" sx={{ marginBottom: "20px" }}>
+      <Typography variant="h3" fontWeight='bold' color="primary.main" sx={{ marginBottom: "20px" }}>
         Trending
       </Typography>
       <Grid

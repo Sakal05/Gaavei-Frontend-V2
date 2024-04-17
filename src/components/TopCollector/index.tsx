@@ -25,6 +25,8 @@ export default function Collector({ contents }: { contents: ICollector[] }) {
     >
       <Typography
         variant="h3"
+        fontWeight="bold"
+        color="primary.main"
         sx={{ width: "100%", textAlign: "left", marginBottom: "20px" }}
       >
         Top Collector
@@ -45,7 +47,7 @@ export default function Collector({ contents }: { contents: ICollector[] }) {
           scrollbarWidth: "none",
         }}
       >
-        {contents.slice(0,8).map((data, index) => (
+        {contents.slice(0, 8).map((data, index) => (
           <CollectorCard
             key={index}
             address={data.address}
@@ -98,16 +100,13 @@ export default function Collector({ contents }: { contents: ICollector[] }) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              width: '100%',
-              m: 'auto',
-              pb: '30px',
+              width: "100%",
+              m: "auto",
+              pb: "30px",
               // pt: "20px",
             }}
           >
-            <Typography
-              variant="h3"
-              pl='35px'
-            >
+            <Typography variant="h3" pl="35px">
               Collector List
             </Typography>
             <Button onClick={handlePopUp}>
@@ -138,7 +137,13 @@ export default function Collector({ contents }: { contents: ICollector[] }) {
                 Token Counts
               </Typography>
             </Grid>
-            <Grid item display={{ xs: 'none', sm: 'block', md: 'block', lg: 'block' }} sm={3} md={2} lg={2}>
+            <Grid
+              item
+              display={{ xs: "none", sm: "block", md: "block", lg: "block" }}
+              sm={3}
+              md={2}
+              lg={2}
+            >
               <Typography variant="h4" textAlign={"left"} fontWeight={"300"}>
                 Rank
               </Typography>

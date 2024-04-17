@@ -18,17 +18,17 @@ const theme = createTheme({
     h1: {
       // Define style for h1 (title) elements
       fontSize: "2.5rem",
-      fontWeight: 700,
+      fontWeight: 500,
     },
     h2: {
       // Define style for h2 elements
       fontSize: "2rem",
-      fontWeight: 600,
+      fontWeight: 700,
     },
     h3: {
       // Define style for h2 elements
       fontSize: "1.5rem",
-      fontWeight: 600,
+      fontWeight: 400,
     },
     h4: {
       fontSize: "1.25rem",
