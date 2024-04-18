@@ -1,14 +1,12 @@
+"use client";
 import Card from "@mui/material/Card";
-import {
-  CardActionArea,
-  CardContent,
-} from "@mui/material";
+import { CardActionArea, CardContent } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { NoSsr } from "@mui/base/NoSsr";
 import ReleaseLoading from "../Loading/Release";
-
+import { useRouter } from "next/navigation";
 export interface IReleaseCard {
   image: string;
   title: string;
@@ -23,10 +21,13 @@ export interface IReleaseCard {
 export default function ReleaseCard({
   image,
   title,
+  tokenId,
   author,
   tier,
   price,
 }: IReleaseCard) {
+  const router = useRouter();
+
   return (
     <NoSsr fallback={<ReleaseLoading />}>
       <Card
@@ -42,6 +43,9 @@ export default function ReleaseCard({
           sx={{
             width: "100%",
             height: "100%",
+          }}
+          onClick={() => {
+            router.push(`/edition/${tokenId}`);
           }}
         >
           <CardContent sx={{ padding: "2px" }}>
@@ -84,7 +88,8 @@ export default function ReleaseCard({
               {/* Text Fields */}
               <Grid
                 item
-                xs={6}
+                xs={5}
+                sm={5}
                 md={6}
                 lg={6}
                 sx={{
@@ -97,21 +102,20 @@ export default function ReleaseCard({
                 <Typography
                   noWrap
                   variant="h4"
+                  fontWeight="bold"
+                  color="primary.main"
                   sx={{
-                    // paddingBottom: "1px",
                     width: "100%",
-                    // fontWeight: "semibold",
-                    // fontSize: "18px",
                   }}
                 >
                   {title}
                 </Typography>
                 <Typography
                   component="span"
+                  variant="h5"
+                  fontWeight="regular"
                   sx={{
-                    display: "inline", // Ensure tier and price are displayed inline
-                    fontWeight: "500", // Make price bold
-                    fontSize: "0.875rem",
+                    display: "inline",
                     paddingBottom: "5px",
                   }}
                 >
@@ -119,7 +123,8 @@ export default function ReleaseCard({
                 </Typography>
                 <Typography
                   noWrap
-                  variant="subtitle2"
+                  variant="h5"
+                  fontWeight="medium"
                   sx={{
                     width: "100%", // Set width to maintain square
                   }}
@@ -130,18 +135,28 @@ export default function ReleaseCard({
               {/* View More Button */}
               <Grid
                 item
-                xs={3}
+                xs={4}
+                sm={4}
                 md={3}
                 lg={3}
                 sx={{
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  height: "100%",
                   width: "100%",
                 }}
               >
-                <Typography variant="h4">
+                <Typography
+                  variant="h4"
+                  fontWeight="bold"
+                  textAlign="right"
+                  color="primary.dark"
+                  sx={{
+                    width: "100%", // Set width to maintain square
+                  }}
+                  noWrap
+                >
+                  {"  "}
                   {price ? price : "Available soon"}
                 </Typography>
               </Grid>

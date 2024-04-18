@@ -63,11 +63,11 @@ function ResponsiveAppBar() {
               <Grid item>
                 <Link href="/">
                   <Typography
-                    variant="h6"
+                    variant="h3"
                     sx={{
                       mr: 2,
                       display: { xs: "flex", sm: "flex", md: "flex" },
-                      fontWeight: 700,
+                      fontWeight: "bold",
                       letterSpacing: ".1rem",
                       color: theme.palette.primary.main,
                       textDecoration: "none",
@@ -81,6 +81,7 @@ function ResponsiveAppBar() {
                 <Grid item key={page.name}>
                   <Link href={page.route}>
                     <Typography
+                      variant="h5"
                       sx={{
                         display: {
                           xs: "none",
@@ -91,7 +92,7 @@ function ResponsiveAppBar() {
                         },
                         textDecoration:
                           pathname === page.route ? "underline" : "none",
-                        fontWeight: pathname === page.route ? "600" : "300",
+                        fontWeight: pathname === page.route ? "bold" : "light",
                       }}
                     >
                       {page.name}

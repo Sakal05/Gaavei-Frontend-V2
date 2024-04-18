@@ -25,7 +25,12 @@ export default function NewRelease({ releaseTitle, content }: IRelease) {
         // alignItems: "center",
       }}
     >
-      <Typography variant="h3" fontWeight='bold' color="primary.main" sx={{ marginBottom: "20px" }}>
+      <Typography
+        variant="h2"
+        fontWeight="bold"
+        color="primary.main"
+        sx={{ marginBottom: "20px" }}
+      >
         {releaseTitle}
       </Typography>
       <Grid
@@ -38,14 +43,7 @@ export default function NewRelease({ releaseTitle, content }: IRelease) {
         }}
       >
         {content.map((info, index) => (
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-            key={index}
-          >
+          <Grid item xs={12} sm={12} md={6} lg={6} key={index}>
             <ReleaseCard
               image={info.image}
               title={info.title}

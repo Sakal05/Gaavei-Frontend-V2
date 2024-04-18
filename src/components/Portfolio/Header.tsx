@@ -36,40 +36,52 @@ export default function Header({ balance, growthRate, data }: IPortfolio) {
           PORTFOLIO ANALYSIS
         </Typography>
         <Typography
+          variant="h4"
+          fontWeight="regular"
           sx={{
             marginBottom: "20px",
-            fontSize: "1.2rem",
-            fontWeight: "400",
             opacity: "0.6",
           }}
         >
           Last 30 days
         </Typography>
-        <Box sx={{ display: "flex", flexDirection: "column", alignItems: 'flex-start'}}>
-          <Typography variant="h2" paddingRight="10px" color="green">
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+          }}
+        >
+          <Typography
+            variant="h2"
+            fontWeight="bold"
+            paddingRight="10px"
+            color="green"
+          >
             +${balance}
           </Typography>
-          <Box sx={{ display: "flex", opacity: 0.6}}>
+          <Box sx={{ display: "flex", opacity: 0.6 }}>
             <TrendingUpIcon
-                fontSize="medium"
-                sx={{ opacity: "1", color: "green" }}
-                color="inherit"
+              fontSize="medium"
+              fontWeight="bold"
+              sx={{ opacity: "1", color: "green" }}
+              color="inherit"
             />
             <Typography
-                variant="h4"
-                sx={{ opacity: "1" }}
-                color="green"
-                paddingLeft="10px"
+              variant="h4"
+              fontWeight="bold"
+              sx={{ opacity: "1" }}
+              color="green"
+              paddingLeft="10px"
             >
-                {growthRate}%
+              {growthRate}%
             </Typography>
-
           </Box>
         </Box>
       </Box>
       <Box
         sx={{
-          width: "80%",
+          width: "100%",
           margin: "auto",
           display: "flex",
           flexDirection: "column",

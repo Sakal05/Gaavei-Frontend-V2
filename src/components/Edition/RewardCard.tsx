@@ -46,7 +46,7 @@ export default function RewardCard({
         }}
       />
       <Typography
-        variant="h6"
+        variant="h4"
         color="primary.main"
         fontWeight={"bold"}
         sx={{ pt: "5px" }}
@@ -54,8 +54,22 @@ export default function RewardCard({
         {rewardTitle}
       </Typography>
       {rewardDescription.length > 150 ? (
-        <Box sx={{ width: '100%', alignItems: 'flex-start'}}>
-          <Typography variant="body1" fontWeight={"regular"} sx={{ pt: "5px", pl: '6px' }}>
+        <Box sx={{ width: "100%", alignItems: "flex-start" }}>
+          <Typography
+            fontWeight={{
+              xs: "light",
+              sm: "light",
+              md: "light",
+              lg: "light",
+            }}
+            fontSize={{
+              xs: "h5",
+              sm: "h5",
+              md: "h4",
+              lg: "h4",
+            }}
+            sx={{ pt: "5px", pl: "6px" }}
+          >
             {expanded
               ? rewardDescription
               : rewardDescription.slice(0, 150) +
@@ -64,6 +78,7 @@ export default function RewardCard({
           {!expanded && (
             <Button
               variant="text"
+              sx={{ fontWeight: "bold", fontSize: "h6" }}
               color="primary"
               onClick={() => setExpanded(true)}
             >
@@ -73,6 +88,7 @@ export default function RewardCard({
           {expanded && (
             <Button
               variant="text"
+              sx={{ fontWeight: "bold", fontSize: "h6" }}
               color="primary"
               onClick={() => setExpanded(false)}
             >
@@ -81,7 +97,21 @@ export default function RewardCard({
           )}
         </Box>
       ) : (
-        <Typography variant="body1" fontWeight={"regular"} sx={{ pt: "5px" }}>
+        <Typography
+          fontWeight={{
+            xs: "light",
+            sm: "light",
+            md: "light",
+            lg: "light",
+          }}
+          fontSize={{
+            xs: "h5",
+            sm: "h5",
+            md: "h4",
+            lg: "h4",
+          }}
+          sx={{ pt: "5px" }}
+        >
           {rewardDescription}
         </Typography>
       )}

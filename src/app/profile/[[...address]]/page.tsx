@@ -13,6 +13,7 @@ import { DataSet } from "@/DummyData/PortfolioData";
 import Collection from "@/components/Portfolio/Collection";
 import { OwnCollectionData } from "@/DummyData/OwnCollectionData";
 import Cover from "@/components/Profile/Cover";
+import { COLLECTOR_DATA } from "@/DummyData/CollectorData";
 import {
   useAccount,
   useBalance,
@@ -22,17 +23,49 @@ import {
 } from "wagmi";
 import { config } from "@/wagmiconfig";
 import { formatUnits } from "viem";
+import { useEffect, useState } from "react";
 
-export default function Profile() {
+interface Props {
+  address: string;
+}
+
+export default function Profile({ params }: { params: Props }) {
+  console.log(params.address[0]);
+  const profileAddress = params.address[0];
+  // const findByAddress = COLLECTOR_DATA[profileAddress];
   const { address, isConnected } = useAccount();
   const { data: ensName } = useEnsName({ address });
   const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
+  const [collectorData, setCollectorData] = useState<any>(null);
+
   const balance = useBalance({
     address,
     config,
   });
+  const isCurrentUser = undefined === profileAddress;
 
-  if (!isConnected) {
+  useEffect(() => {
+    function findCollectorByAddress(addressToFind: string) {
+      return COLLECTOR_DATA.find(
+        (collector) => collector.address === addressToFind
+      );
+    }
+
+    const foundCollector = findCollectorByAddress(profileAddress);
+    if (!foundCollector) {
+      setCollectorData({
+        address: address,
+        ensName: ensName,
+        ensAvatar: ensAvatar,
+        balance: balance,
+      });
+    } else {
+      setCollectorData(foundCollector);
+    }
+    console.log("P: ", foundCollector);
+  }, []);
+
+  if (!isConnected || collectorData === null) {
     return (
       <Box
         sx={{
@@ -55,11 +88,10 @@ export default function Profile() {
             // gap: "2px",
           }}
         >
-          <Skeleton animation="wave" width='100%' height='150px'/>
+          <Skeleton animation="wave" width="100%" height="150px" />
           <Skeleton variant="circular" width={80} height={80} />
-          <Skeleton animation="wave" width='100%' height='50px'/>
-          <Skeleton animation="wave" height='150px'/>
-
+          <Skeleton animation="wave" width="100%" height="50px" />
+          <Skeleton animation="wave" height="150px" />
         </Container>
       </Box>
     );
@@ -77,20 +109,7 @@ export default function Profile() {
         marginTop: "65px",
       }}
     >
-      <Cover
-        address={`${address}`}
-        role={"Artist"}
-        tokens={"100"}
-        balance={
-          balance?.data?.value
-            ? `${formatUnits(balance.data!.value, balance.data!.decimals).slice(
-                0,
-                5
-              )}`
-            : "0.00"
-        }
-        collections={null}
-      />
+      <Cover address={`${collectorData.address}`} role={"Artist"} />
       <Container
         maxWidth="lg"
         sx={{
@@ -114,13 +133,21 @@ export default function Profile() {
           }}
         >
           <Box>
-            <Typography variant="h4">Tokens</Typography>
-            <Typography variant="body1">120</Typography>
+            <Typography variant="h4" fontWeight="bold">
+              Tokens
+            </Typography>
+            <Typography variant="h4" fontWeight="light">
+              120
+            </Typography>
           </Box>
           <Divider orientation="vertical" variant="middle" flexItem />
           <Box>
-            <Typography variant="h4">Tokens</Typography>
-            <Typography variant="body1">120</Typography>
+            <Typography variant="h4" fontWeight="bold">
+              Tokens
+            </Typography>
+            <Typography variant="h4" fontWeight="light">
+              120
+            </Typography>
           </Box>
         </Box>
         <Typography
@@ -128,7 +155,7 @@ export default function Profile() {
           fontWeight="bold"
           sx={{ color: "primary.main", textAlign: "left" }}
         >
-          MY COLLECTIONS
+          {isCurrentUser ? "MY" : "THEIR"} COLLECTIONS
         </Typography>
         <Collection contents={OwnCollectionData} />
       </Container>

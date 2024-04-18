@@ -1,9 +1,13 @@
-import { IOwnCollection } from './IOwnCollection'
+import { IOwnCollection } from "./IOwnCollection";
 
+export interface IProfileCover {
+  address: string;
+  role: string;
+}
 export interface IProfile {
-    address: string;
-    role: string;
-    tokens: string;
-    balance: string;
-    collections: IOwnCollection[] | null;
+  address: string;
+  role: string;
+  tokens: string;
+  balance: string;
+  collections: IOwnCollection[] | null;
 }

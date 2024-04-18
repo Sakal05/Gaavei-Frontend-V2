@@ -8,58 +8,86 @@ const roboto = Roboto({
   display: "swap",
 });
 
+import { Lato } from "next/font/google";
+
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["100", "300", "900", "400", "700"],
+  display: "swap",
+});
+
 const theme = createTheme({
   typography: {
-    fontFamily: [
-      'Roboto',
-      'Lato',
-      'sans-serif',
-    ].join(','),
+    fontFamily: [lato.style.fontFamily, "-apple-system"].join(","),
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    fontWeightBold: 700,
+    fontSize: 14,
     h1: {
-      // Define style for h1 (title) elements
-      fontSize: "2.5rem",
-      fontWeight: 500,
+      fontSize: "2rem",
     },
     h2: {
-      // Define style for h2 elements
-      fontSize: "2rem",
-      fontWeight: 700,
+      fontSize: "1.5rem",
     },
     h3: {
-      // Define style for h2 elements
-      fontSize: "1.5rem",
-      fontWeight: 400,
+      fontSize: "1.17rem",
     },
     h4: {
-      fontSize: "1.25rem",
-      fontWeight: 600,
+      fontSize: "1rem",
     },
     h5: {
-      fontSize: "0.875rem",
-      fontWeight: 300,
+      fontSize: "0.83rem",
     },
-    body1: {
-      // Define style for normal text
-      fontSize: "1rem",
-      fontWeight: 400,
+    h6: {
+      fontSize: "0.75rem",
     },
-    body2: {
-      fontSize: "0.8rem",
-      fontWeight: 200,
-    },
-    subtitle1: {
-      // Define style for secondary text
-      fontSize: "1rem",
-      fontWeight: 600,
-    },
-    subtitle2: {
-      fontSize: "0.875rem",
-      fontWeight: 200,
-    },
-    button: {
-      fontSize: "1rem",
-      fontWeight: 600,
-    },
+    // fontFamily: ["Roboto", "Lato", "sans-serif"].join(","),
+    // h1: {
+    //   // Define style for h1 (title) elements
+    //   fontSize: "2.5rem",
+    //   fontWeight: 500,
+    // },
+    // h2: {
+    //   // Define style for h2 elements
+    //   fontSize: "2rem",
+    //   fontWeight: 700,
+    // },
+    // h3: {
+    //   // Define style for h2 elements
+    //   fontSize: "1.5rem",
+    //   fontWeight: 400,
+    // },
+    // h4: {
+    //   fontSize: "1.25rem",
+    //   fontWeight: 600,
+    // },
+    // h5: {
+    //   fontSize: "0.875rem",
+    //   fontWeight: 300,
+    // },
+    // body1: {
+    //   // Define style for normal text
+    //   fontSize: "1rem",
+    //   fontWeight: 400,
+    // },
+    // body2: {
+    //   fontSize: "0.8rem",
+    //   fontWeight: 200,
+    // },
+    // subtitle1: {
+    //   // Define style for secondary text
+    //   fontSize: "1rem",
+    //   fontWeight: 600,
+    // },
+    // subtitle2: {
+    //   fontSize: "0.875rem",
+    //   fontWeight: 200,
+    // },
+    // button: {
+    //   fontSize: "1rem",
+    //   fontWeight: 600,
+    // },
 
     // h5: {
     //     fontSize: ""

@@ -24,7 +24,7 @@ export default function Collector({ contents }: { contents: ICollector[] }) {
       }}
     >
       <Typography
-        variant="h3"
+        variant="h2"
         fontWeight="bold"
         color="primary.main"
         sx={{ width: "100%", textAlign: "left", marginBottom: "20px" }}
@@ -92,7 +92,8 @@ export default function Collector({ contents }: { contents: ICollector[] }) {
             bgcolor: "background.paper",
             borderRadius: "12px",
             boxShadow: 24,
-            p: 4,
+            p: "24px",
+            scrollbarWidth: "0px",
           }}
         >
           <Box
@@ -102,38 +103,45 @@ export default function Collector({ contents }: { contents: ICollector[] }) {
               alignItems: "center",
               width: "100%",
               m: "auto",
-              pb: "30px",
+              pb: "12px",
               // pt: "20px",
             }}
           >
-            <Typography variant="h3" pl="35px">
+            <Typography variant="h3" width="100%">
               Collector List
             </Typography>
-            <Button onClick={handlePopUp}>
+            <Button
+              onClick={handlePopUp}
+              sx={{
+                borderRadius: "50px",
+                justifyContent: "flex-end",
+                minWidth: 0,
+              }}
+            >
               <CloseIcon />
             </Button>
           </Box>
           <Grid
             container
             direction="row"
-            columnSpacing={5}
+            columnSpacing={{ xs: 2, sm: 2, md: 2, lg: 3 }}
             alignItems="center"
             color="grey"
-            pb="12px"
+            // pb="12px"
           >
-            <Grid item xs={6} sm={6} md={7} lg={7}>
+            <Grid item xs={7} sm={6} md={7} lg={7}>
               <Typography
                 variant="h4"
                 noWrap
                 textAlign="left"
-                pl="35px"
-                fontWeight={"300"}
+                // pl="35px"
+                fontWeight="light"
               >
                 Name
               </Typography>
             </Grid>
-            <Grid item xs={6} sm={3} md={3} lg={3}>
-              <Typography variant="h4" textAlign={"left"} fontWeight={"300"}>
+            <Grid item xs={5} sm={3} md={3} lg={3}>
+              <Typography variant="h4" textAlign={"center"} fontWeight="light">
                 Token Counts
               </Typography>
             </Grid>
@@ -144,29 +152,26 @@ export default function Collector({ contents }: { contents: ICollector[] }) {
               md={2}
               lg={2}
             >
-              <Typography variant="h4" textAlign={"left"} fontWeight={"300"}>
+              <Typography variant="h4" textAlign={"center"} fontWeight={"300"}>
                 Rank
               </Typography>
             </Grid>
           </Grid>
           <Box
             sx={{
-              position: "relative",
               width: "100%",
-              height: "90%",
               overflowY: "auto",
               display: "flex",
               flexDirection: "column",
-              flexShrink: 0,
               alignItems: "center",
               justifyContent: "center", // Align items horizontally at the center
-              // "&::-webkit-scrollbar": {
-              //   // display: "none",
-              //   paddingLeft: '20px',
-              //   opacity: 0.5,
-              // },
-              scrollbarWidth: "1px",
-              scrollbarColor: "grey",
+              "&::-webkit-scrollbar": {
+                display: "none",
+                // paddingLeft: '20px',
+                // opacity: 0.5,
+              },
+              scrollbarWidth: "0px",
+              // scrollbarColor: "grey",
             }}
           >
             {contents.map((data, index) => (

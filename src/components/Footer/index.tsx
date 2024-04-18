@@ -2,24 +2,38 @@ import { Box, Container, Grid, Typography, Divider } from "@mui/material";
 
 function Footer() {
   return (
-    <Box width={"100%"}>
-      <Divider sx={{ paddingTop: "70px" }} />
+    <Box
+      width={"100%"}
+      minHeight={{ xs: "820px", md: "auto", sm: "auto", lg: "auto" }}
+    >
+      <Divider sx={{ marginTop: "70px" }} />
       <Container
-        sx={{ width: "90%", paddingTop: "50px", paddingBottom: "30px" }}
+        sx={{
+          width: "100%",
+          paddingBottom: "30px",
+        }}
       >
         <Grid
           container
+          display={{ xs: "block", sm: "block", md: "flex", lg: "flex" }}
+          direction="row"
           rowSpacing={5}
-          columnSpacing={0}
-          sx={{ margin: "auto", width: "100%", alignItems: "flex-start", justifyContent: "space-between" }}
+          columnSpacing={2}
+          sx={{
+            margin: "auto",
+            width: "100%",
+            height: "100%",
+            alignItems: "flex-start",
+            justifyContent: "space-between",
+          }}
         >
-          <Grid item sm={12} md={3} lg={3} sx={{ width: "100%" }}>
+          <Grid item xs={12} sm={12} md={3} lg={3} sx={{ width: "100%" }}>
             <Typography
-              variant="h6"
+              variant="h3"
+              fontWeight="bold"
               sx={{
                 mr: 2,
                 display: { xs: "flex", md: "flex" },
-                fontWeight: 700,
                 letterSpacing: ".1rem",
                 color: "primary.main",
                 textDecoration: "none",
@@ -31,6 +45,7 @@ function Footer() {
           <Grid
             item
             container
+            xs={12}
             sm={4}
             md={3}
             lg={3}
@@ -39,15 +54,20 @@ function Footer() {
             width="100%"
           >
             <Grid item>
-              <Typography variant="body1">Help center</Typography>
+              <Typography variant="h4" fontWeight="light">
+                Help center
+              </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1">Support</Typography>
+              <Typography variant="h4" fontWeight="light">
+                Support
+              </Typography>
             </Grid>
           </Grid>
           <Grid
             item
             container
+            xs={12}
             sm={4}
             md={3}
             lg={3}
@@ -56,27 +76,40 @@ function Footer() {
             width="100%"
           >
             <Grid item>
-              <Typography variant="body1">Blog</Typography>
+              <Typography variant="h4" fontWeight="light">
+                Blog
+              </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1">Twitter</Typography>
+              <Typography variant="h4" fontWeight="light">
+                Twitter
+              </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1">Facebook</Typography>
+              <Typography variant="h4" fontWeight="light">
+                Facebook
+              </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1">Tiktok</Typography>
+              <Typography variant="h4" fontWeight="light">
+                Tiktok
+              </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1">Instagram</Typography>
+              <Typography variant="h4" fontWeight="light">
+                Instagram
+              </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1">Discord</Typography>
+              <Typography variant="h4" fontWeight="light">
+                Discord
+              </Typography>
             </Grid>
           </Grid>
           <Grid
             item
             container
+            xs={12}
             sm={4}
             md={3}
             lg={3}
@@ -85,16 +118,24 @@ function Footer() {
             width="100%"
           >
             <Grid item>
-              <Typography variant="body1">Jobs</Typography>
+              <Typography variant="h4" fontWeight="light">
+                Jobs
+              </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1">Privacy</Typography>
+              <Typography variant="h4" fontWeight="light">
+                Privacy
+              </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1">Term of service</Typography>
+              <Typography variant="h4" fontWeight="light">
+                Term of service
+              </Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1">Associated Risks</Typography>
+              <Typography variant="h4" fontWeight="light">
+                Associated Risks
+              </Typography>
             </Grid>
           </Grid>
         </Grid>

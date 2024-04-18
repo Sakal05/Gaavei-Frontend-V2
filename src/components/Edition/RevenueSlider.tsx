@@ -35,7 +35,7 @@ const PrettoSlider = styled(Slider)({
   },
   "& .MuiSlider-valueLabel": {
     backgroundColor: "transparent",
-  }
+  },
   //   lineHeight: 1.2,
   //   fontSize: 12,
   //   background: "unset",
@@ -97,20 +97,34 @@ export default function RevenueSlider() {
   };
 
   const valueLabelFormat = (value: number) => (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100%'}}>
-      <Typography variant="h3" fontWeight='bold' color="primary.main">
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        height: "100%",
+        gap: "3px",
+      }}
+    >
+      <Typography variant="h3" fontWeight="bold" color="primary.main">
         ${`${rate.toFixed(2)}$`}
       </Typography>
-      <Typography variant="body2" color="primary.main" sx={{ opacity: 0.6}}>
+      <Typography variant="h5" color="primary.main" sx={{ opacity: 0.6 }}>
         Annualized Incentive Est.
       </Typography>
-      <Typography variant="body1" color="primary.main" sx={{ opacity: 0.6}}>
-      {`${value}M`}
+      <Typography variant="h4" color="primary.main" sx={{ opacity: 0.6 }}>
+        {`${value}M`}
       </Typography>
-      <Divider orientation="vertical" sx={{ width: "1px", background: "rgba(0, 0, 0, 0.5)", margin: "0 auto" }} />
+      <Divider
+        orientation="vertical"
+        sx={{
+          width: "1px",
+          background: "rgba(0, 0, 0, 0.5)",
+          margin: "0 auto",
+        }}
+      />
     </Box>
   );
-
 
   return (
     <Box
@@ -147,21 +161,18 @@ export default function RevenueSlider() {
           justifyContent: "space-between",
           display: "flex",
           flexDirection: "row",
-          pt: '10px'
+          pt: "10px",
         }}
       >
-        <Typography variant="h4" color="primary.main" sx={{opacity: 0.6}}>
+        <Typography variant="h5" color="primary.main" sx={{ opacity: 0.6 }}>
           +0
         </Typography>
-        <Typography variant="h4" color="primary.main" sx={{opacity: 0.6}}>
+        <Typography variant="h5" color="primary.main" sx={{ opacity: 0.6 }}>
           STREAMS
         </Typography>
-        <Typography variant="h4" color="primary.main" sx={{opacity: 0.6}}>
+        <Typography variant="h5" color="primary.main" sx={{ opacity: 0.6 }}>
           +10M
         </Typography>
-        {/* <Typography variant="h3" color="primary.main" sx={{ mt: "10px" }}>
-          {rate}% APY
-        </Typography> */}
       </Box>
     </Box>
   );

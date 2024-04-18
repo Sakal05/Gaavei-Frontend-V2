@@ -47,16 +47,15 @@ export default function AccountMenu() {
     config,
   });
 
-
   if (!isConnected) {
     return null;
   }
 
   React.useEffect(() => {
-      setIsMounted(true);
-  }, [])
+    setIsMounted(true);
+  }, []);
 
-  if(!isMounted) {
+  if (!isMounted) {
     return null;
   }
 
@@ -127,7 +126,7 @@ export default function AccountMenu() {
       >
         <MenuItem
           onClick={() => router.push("/profile")}
-          sx={{ color: "primary.dark" }}
+          sx={{ color: "primary.dark", py: 0 }}
         >
           <Grid container sx={{ display: "flex", alignItems: "center" }}>
             <Grid item>
@@ -169,6 +168,9 @@ export default function AccountMenu() {
 
         <Divider />
         <MenuItem
+          sx={{
+            py: 0,
+          }}
           onClick={() => {
             router.push("/profile");
           }}
@@ -182,6 +184,9 @@ export default function AccountMenu() {
           <Typography variant="subtitle1">Profile</Typography>
         </MenuItem>
         <MenuItem
+          sx={{
+            py: 0,
+          }}
           onClick={() => {
             router.push("/portfolio");
           }}
@@ -195,7 +200,12 @@ export default function AccountMenu() {
           <Typography variant="subtitle1">Earning</Typography>
         </MenuItem>
         <Divider />
-        <MenuItem onClick={() => disconnect()}>
+        <MenuItem
+          sx={{
+            py: 0,
+          }}
+          onClick={() => disconnect()}
+        >
           <ListItemIcon>
             <LogoutOutlinedIcon
               fontSize="medium"

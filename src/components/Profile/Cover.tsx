@@ -12,7 +12,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ShareIcon from "@mui/icons-material/Share";
 import { styled } from "@mui/system";
 import { useRouter } from "next/navigation";
-import { IProfile } from "../interface/IProfile";
+import { IProfileCover } from "../interface/IProfile";
 import {
   useAccount,
   useBalance,
@@ -26,15 +26,8 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
   color: theme.palette.text.primary,
 }));
 
-export default function Cover({
-  address,
-  balance,
-  role,
-  tokens,
-  collections,
-}: IProfile) {
+export default function Cover({ address, role }: IProfileCover) {
   const router = useRouter();
- 
 
   return (
     <Box
@@ -108,7 +101,7 @@ export default function Cover({
           display="flex"
           justifyContent="space-between"
           alignItems="center"
-          zIndex={10}
+          // zIndex={10}
           color="primary.light"
         >
           <Box
@@ -116,10 +109,14 @@ export default function Cover({
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
+              justifyContent: "flex-start",
+              width: "auto",
             }}
           >
             <img
-              src={'https://i.seadn.io/s/raw/files/08471b7441ff6d16905d6ab643e6f3b4.png?auto=format&dpr=1&w=136&h=136&fr=1'}
+              src={
+                "https://i.seadn.io/s/raw/files/08471b7441ff6d16905d6ab643e6f3b4.png?auto=format&dpr=1&w=136&h=136&fr=1"
+              }
               alt="Music cover"
               style={{
                 maxWidth: "100%",
@@ -133,10 +130,12 @@ export default function Cover({
             <Grid
               container
               direction="column"
+              rowSpacing={{ xs: 1, sm: 1, md: 1, lg: 1 }}
+              alignItems="flex-start"
               justifyContent="center"
-              sx={{ paddingLeft: "20px" }}
+              sx={{ paddingLeft: "20px", height: "100%", width: "100%" }}
             >
-              <Grid item sx={{ textAlign: "left", marginBottom: "5px" }}>
+              <Grid item sx={{ textAlign: "left" }}>
                 <Chip
                   label={role}
                   sx={{
@@ -148,12 +147,15 @@ export default function Cover({
                   }}
                 />
               </Grid>
-              <Grid item sx={{ textAlign: "left", marginBottom: "5px" }}>
-                <Typography variant="h2">{address}</Typography>
+              <Grid item sx={{ textAlign: "left", minWidth: 0 }}>
+                <Typography
+                  variant="h2"
+                  noWrap={false}
+                  sx={{ width: "100%", textAlign: "left", minWidth: 0 }}
+                >
+                  {address.slice(0, 15)}...
+                </Typography>
               </Grid>
-              {/* <Grid item sx={{ textAlign: "left" }}>
-                <Typography variant="h4">{author}</Typography>
-              </Grid> */}
             </Grid>
           </Box>
         </Box>

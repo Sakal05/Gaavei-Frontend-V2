@@ -10,8 +10,6 @@ import IconButton from "@mui/material/IconButton";
 import SwiperSlider from "./SwiperSlider";
 import Chip from "@mui/material/Chip";
 
-
-
 function Learn({ contents }: { contents: IArticle[] }) {
   return (
     <Box
@@ -26,7 +24,12 @@ function Learn({ contents }: { contents: IArticle[] }) {
         position: "relative", // Set position relative for absolute positioning of buttons
       }}
     >
-      <Typography variant="h3" fontWeight='bold' color="primary.main" sx={{ marginBottom: "20px" }}>
+      <Typography
+        variant="h2"
+        fontWeight="bold"
+        color="primary.main"
+        sx={{ marginBottom: "20px" }}
+      >
         Learn
       </Typography>
       <Chip
@@ -39,7 +42,7 @@ function Learn({ contents }: { contents: IArticle[] }) {
         label="Trending News"
       />
       <Suspense fallback={<CircularProgress />}>
-        <SwiperSlider contents={contents}/>
+        <SwiperSlider contents={contents} />
       </Suspense>
     </Box>
   );

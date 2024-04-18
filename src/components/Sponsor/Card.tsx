@@ -45,8 +45,8 @@ const HeaderCard = ({ title, image, author, available }: ISponsorCard) => {
           sx={{
             height: "100%",
             position: "absolute",
-            top: "70%",
-            left: "50%",
+            top: { xs: "65%", sm: "70%", md: "70%", lg: "70%" },
+            left: { xs: "45%", sm: "45%", md: "50%", lg: "50%" },
             transform: "translateY(-50%)",
             zIndex: 10, // Ensure buttons are above slider
           }}
@@ -74,17 +74,22 @@ const HeaderCard = ({ title, image, author, available }: ISponsorCard) => {
                 // gutterBottom
                 variant="h3"
                 component="div"
-                sx={{ fontSize: "1.2rem", padding: "0" }}
+                fontWeight="medium"
+                sx={{
+                  padding: "0",
+                  textShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)",
+                }}
               >
                 Vannda x Vanthan
               </Typography>
               <Typography
-                // gutterBottom
+                gutterBottom
                 component="div"
+                variant="h1"
+                fontWeight="bold"
                 sx={{
                   padding: "0",
-                  fontSize: "2rem",
-                  fontWeight: "600",
+                  textShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)",
                 }}
               >
                 Point of No Return
@@ -92,14 +97,15 @@ const HeaderCard = ({ title, image, author, available }: ISponsorCard) => {
             </Grid>
           </Grid>
           <Chip
-            label="Comming Soon..."
+            label={
+              <Typography variant="h5" fontWeight="regular">
+                Comming Soon...
+              </Typography>
+            }
             sx={{
-              fontFamily: "Roboto",
               height: "20px",
-              fontSize: '14px',
-              fontWeight: "500",
               color: "primary.light",
-              borderRadius: "5px",
+              borderRadius: "8px",
               border: "0.5px solid #ffffff",
               backgroundColor: "transparency",
             }}

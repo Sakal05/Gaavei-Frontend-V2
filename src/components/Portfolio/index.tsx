@@ -27,25 +27,39 @@ export default function Portfolio({ balance, growthRate, data }: IPortfolio) {
       }}
     >
       <Box>
-        <Typography variant="h2" fontWeight='bold' color="primary.main" sx={{ marginBottom: "5px" }}>
+        <Typography
+          variant="h2"
+          fontWeight="bold"
+          color="primary.main"
+          sx={{ marginBottom: "5px" }}
+        >
           My Earning
         </Typography>
         <Typography
+          variant="h4"
           sx={{
             marginBottom: "20px",
-            fontSize: "1.2rem",
-            fontWeight: "400",
             opacity: "0.6",
           }}
         >
           Last 30 days
         </Typography>
         <Box sx={{ display: "flex", alignItems: "center", margin: "auto" }}>
-          <Typography variant="h2" color="green" paddingRight="10px">
+          <Typography
+            variant="h2"
+            fontWeight="bold"
+            color="green"
+            paddingRight="10px"
+          >
             + ${balance}
           </Typography>
           <TrendingUpIcon fontSize="large" sx={{ opacity: "0.6" }} />
-          <Typography variant="h2" sx={{ opacity: "0.6" }} paddingLeft="10px">
+          <Typography
+            variant="h2"
+            fontWeight="bold"
+            sx={{ opacity: "0.6" }}
+            paddingLeft="10px"
+          >
             {growthRate}%
           </Typography>
         </Box>
@@ -54,7 +68,7 @@ export default function Portfolio({ balance, growthRate, data }: IPortfolio) {
         sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
       >
         <Link href="/portfolio">
-          <Typography variant="button" color="blue">
+          <Typography variant="button" fontWeight="medium" color="blue">
             View Portfolio
           </Typography>
         </Link>

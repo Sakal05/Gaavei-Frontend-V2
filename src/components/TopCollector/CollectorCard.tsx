@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Avatar,
   Box,
@@ -6,6 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import { useRouter } from "next/navigation";
 
 export interface ICollector {
   address: string;
@@ -18,6 +21,7 @@ export default function CollectorCard({
   collection_token,
   image_url,
 }: ICollector) {
+  const router = useRouter();
   return (
     <Box
       sx={{
@@ -32,6 +36,7 @@ export default function CollectorCard({
     >
       <CardActionArea
         sx={{ position: "relative", width: "100%", height: "250px" }}
+        onClick={() => router.push(`/profile/${address}`)}
       >
         <CardMedia
           component="img"

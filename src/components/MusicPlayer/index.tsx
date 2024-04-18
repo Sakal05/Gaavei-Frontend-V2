@@ -106,14 +106,11 @@ export default function MusicPlayerSlider({
   };
 
   return (
-    <Box sx={{ width: "100%", overflow: "hidden" }}>
+    <Box sx={{ width: "100%" }}>
       <Widget>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <CoverImage>
-            <img
-              alt={title}
-              src={image}
-            />
+            <img alt={title} src={image} />
           </CoverImage>
 
           <Box sx={{ ml: 1.5, minWidth: 0 }}>
@@ -124,7 +121,7 @@ export default function MusicPlayerSlider({
             >
               {author}
             </Typography>
-            <Typography noWrap fontWeight='bold'>
+            <Typography noWrap fontWeight="bold">
               {title}
             </Typography>
             {/* <Typography noWrap letterSpacing={-0.25}>

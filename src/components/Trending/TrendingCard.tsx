@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
@@ -8,7 +8,7 @@ import { ICard } from "@/components/interface/ICard";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import { NoSsr } from "@mui/base/NoSsr";
 import TrendingSkeleton from "../Loading/Trending";
-import { useRouter} from 'next/navigation';
+import { useRouter } from "next/navigation";
 
 function TrendingCard({
   image,
@@ -32,7 +32,11 @@ function TrendingCard({
           position: "relative",
         }}
       >
-        <CardActionArea onClick={() => { router.push(`/edition/${tokenId}`) }}>
+        <CardActionArea
+          onClick={() => {
+            router.push(`/edition/${tokenId}`);
+          }}
+        >
           <Box
             sx={{
               height: 200, // Adjust the image height as needed
@@ -81,23 +85,27 @@ function TrendingCard({
               <Chip
                 label={type}
                 sx={{
-                  fontWeight: "600",
+                  fontWeight: "500",
                   fontSize: "16px",
                   color: "primary.light",
                   borderRadius: "12px",
                   backgroundColor: "transparency",
                   backdropFilter: "blur(20px)",
-                  marginBottom: "15px",
+                  marginBottom: "12px",
                 }}
               />
               <Typography
                 variant="h2"
+                fontWeight="bold"
                 component="div"
-                sx={{ paddingBottom: "5px" }}
+                sx={{
+                  paddingBottom: "5px",
+                  textShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)",
+                }}
               >
                 {title}
               </Typography>
-              <Typography variant="h6" noWrap>
+              <Typography variant="h4" noWrap>
                 {author}
               </Typography>
             </Box>
@@ -116,12 +124,12 @@ function TrendingCard({
             alignItems="center"
             justifyContent="center" // Center align both price and icon horizontally
           >
-            <Typography variant="h6" noWrap>
+            <Typography variant="h4" noWrap>
               {price ? price : "Comming Soon..."}
             </Typography>
             {price && (
               <EmojiEventsIcon
-                fontSize="large"
+                fontSize="medium"
                 sx={{
                   color:
                     tier === "GOLD"
@@ -140,7 +148,9 @@ function TrendingCard({
           </Box>
           <Button
             // variant="outlined"
-            onClick={() => { router.push(`/edition/${tokenId}`) }}
+            onClick={() => {
+              router.push(`/edition/${tokenId}`);
+            }}
             sx={{
               border: "0.6px solid",
               borderColor: "primary.dark",
