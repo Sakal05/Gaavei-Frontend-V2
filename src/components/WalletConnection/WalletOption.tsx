@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const CustomConnectButton = () => {
@@ -36,19 +36,30 @@ const CustomConnectButton = () => {
             {(() => {
               if (!connected) {
                 return (
-                  <Button
+                  <Box
                     sx={{
-                      width: "100%",
-                      borderColor: "primary.main",
-                      borderWidth: "1px",
-                      borderStyle: "solid", // Adding border style
-                      borderRadius: "8px",
-                      px: "8px",
+                      display: "flex",
+                      alignItems: "flex-end",
+                      justifyContent: "flex-end",
                     }}
-                    onClick={openConnectModal}
                   >
-                    Connect Wallet
-                  </Button>
+                    <Button
+                      sx={{
+                        // width: "100%",
+                        borderColor: "primary.main",
+                        borderWidth: "0.8px",
+                        borderStyle: "solid",
+                        borderRadius: "8px",
+                        alignItems: "flex-end",
+                        justifyContent: "flex-end",
+                        // px: "12px",
+                        // display: "inline-block", // Adjusted display property
+                      }}
+                      onClick={openConnectModal}
+                    >
+                      <Typography variant="h6">Connect Wallet</Typography>
+                    </Button>
+                  </Box>
                 );
               }
 

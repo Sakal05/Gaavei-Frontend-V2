@@ -104,7 +104,7 @@ function ResponsiveAppBar() {
             <Box
               sx={{
                 flexGrow: 0,
-                width: "30%",
+                width: "100%",
                 margin: "auto",
                 justifyContent: "flex-end",
               }}
