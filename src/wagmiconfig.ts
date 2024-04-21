@@ -1,11 +1,8 @@
 import { http, createConfig } from "wagmi";
 import { sepolia, morphSepolia } from "wagmi/chains";
-import '@rainbow-me/rainbowkit/styles.css';
+import "@rainbow-me/rainbowkit/styles.css";
 import { injected, metaMask } from "wagmi/connectors";
-import {
-  getDefaultWallets,
-  getDefaultConfig,
-} from "@rainbow-me/rainbowkit";
+import { getDefaultWallets, getDefaultConfig } from "@rainbow-me/rainbowkit";
 import {
   argentWallet,
   trustWallet,
@@ -17,10 +14,10 @@ const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
 
 export const config = getDefaultConfig({
   appName: "GAAVIE APP",
-  projectId: projectId ? projectId : '',
+  projectId: projectId ? projectId : "",
   chains: [
-    sepolia,
     morphSepolia,
+    sepolia,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [sepolia] : []),
   ],
   wallets: [
@@ -34,8 +31,8 @@ export const config = getDefaultConfig({
   //   metaMask(),
   // ],
   transports: {
-    [sepolia.id]: http(),
     [morphSepolia.id]: http(),
+    [sepolia.id]: http(),
   },
   ssr: true,
 });

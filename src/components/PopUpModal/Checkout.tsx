@@ -17,6 +17,7 @@ import ConfirmationModal from "./Confirmation";
 import Confirmation from "./Confirmation";
 
 export default function Checkout({
+  tokenId,
   image,
   author,
   title,
@@ -167,7 +168,7 @@ export default function Checkout({
               Total Price
             </Typography>
             <Typography variant="h4" color="primary.main">
-              {calculateTotalAmount()} BNB
+              {calculateTotalAmount()} ETH
             </Typography>
           </Box>
           <Box
@@ -198,7 +199,12 @@ export default function Checkout({
         </Box>
       </Modal>
       {proceed == true && (
-        <Confirmation isOpen={proceed} setOpen={handleConfirm} />
+        <Confirmation
+          tokenId={tokenId}
+          amount={quantity}
+          isOpen={proceed}
+          setOpen={handleConfirm}
+        />
       )}
     </>
   );

@@ -10,9 +10,9 @@ import Portfolio from "@/components/Portfolio";
 import Release from "@/components/ReleaseComponent";
 import Trending from "@/components/Trending";
 import { Container } from "@mui/material";
+import GetData from "@/utils/GetData";
 
 export default function Home() {
-
   return (
     <Box
       sx={{

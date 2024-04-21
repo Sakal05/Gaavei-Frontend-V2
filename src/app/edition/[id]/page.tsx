@@ -20,6 +20,9 @@ import RevenueSlider from "@/components/Edition/RevenueSlider";
 import MusicPlayerSlider from "@/components/MusicPlayer";
 import Checkout from "@/components/PopUpModal/Checkout";
 import { useRouter } from "next/router";
+import { NEWRELEASEDATA } from "@/DummyData/NewReleaseData";
+import Link from "next/link";
+import { ToastContainer } from "react-toastify";
 
 type EditionParam = {
   id: string;
@@ -35,7 +38,8 @@ const Edition: React.FC<Props> = ({ params }) => {
 
   console.log(params.id);
   const id = params.id;
-  const DUMMYDATA = EDITIONDUMMY[parseInt(id)];
+  // const DUMMYDATA = NEWRELEASEDATA[parseInt(id)];
+  const DUMMYDATA = NEWRELEASEDATA.find((item) => item.tokenId === id);
   // Check if data exists
   if (isNaN(parseInt(id))) {
     console.log("here");
@@ -98,6 +102,7 @@ const Edition: React.FC<Props> = ({ params }) => {
         alignItems: "center",
       }}
     >
+      <ToastContainer autoClose={8000} />
       <MusicCover
         image={DUMMYDATA.image}
         type={DUMMYDATA.type}
@@ -135,7 +140,7 @@ const Edition: React.FC<Props> = ({ params }) => {
             <Typography variant="h4" fontWeight="regular" sx={{ pb: "5px" }}>
               Price
             </Typography>
-            <Typography variant="h3">{DUMMYDATA.price} BNB</Typography>
+            <Typography variant="h3">{DUMMYDATA.price}</Typography>
           </Box>
           <Button
             sx={{
@@ -329,9 +334,14 @@ const Edition: React.FC<Props> = ({ params }) => {
                 <Typography variant="h4">Contract Address</Typography>
               </AccordionSummary>
               <AccordionDetails sx={{ p: "0px 16px" }}>
-                <Typography variant="h4" sx={{ opacity: 0.8 }}>
-                  {DUMMYDETAIL.contractAddress}
-                </Typography>
+                <Link
+                  href={`https://explorer-testnet.morphl2.io/address/${DUMMYDETAIL.contractAddress}`}
+                  target="_blank"
+                >
+                  <Typography variant="h4" sx={{ opacity: 0.8 }}>
+                    {DUMMYDETAIL.contractAddress}
+                  </Typography>
+                </Link>
               </AccordionDetails>
             </Accordion>
             <Accordion
@@ -419,10 +429,11 @@ const Edition: React.FC<Props> = ({ params }) => {
         />
       </Box>
       <Checkout
+        tokenId={DUMMYDATA.tokenId}
         image={DUMMYDATA.image}
         title={DUMMYDATA.title}
         author={DUMMYDATA.author}
-        price={DUMMYDATA.price}
+        price={DUMMYDATA.price ?? "Comming soon"}
         setCheckOut={setCheckOut}
         isCheckOut={isCheckOut}
       />

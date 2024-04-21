@@ -39,7 +39,7 @@ export default function Trending({ contents }: { contents: ICard[] }) {
           width: "100%",
         }}
       >
-        {contents.map((info, index) => (
+        {contents.slice(2, 6).map((info, index) => (
           <Grid
             item
             xs={12}

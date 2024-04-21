@@ -1,0 +1,17 @@
+import COLLECTION from "./ABI.json";
+import STAKING from "./STAKING.json";
+import REWARDTOKEN from "./REWARDTOKEN.json";
+import { ethers } from "ethers";
+const ADDRESS = {
+  COLLECTION: "0xd4FFd68f1B10a4b020cCe246Ac8C1F16Cbd5F4e7",
+  STAKING: "0xC92863bDa252aA244E6c0d549dba60473d93508d",
+  REWARDTOKEN: "0x2B8Fa5Ea3b1608d4eA331E0e740641d600b21689",
+};
+
+const ABI = {
+  COLLECTION,
+  STAKING,
+  REWARDTOKEN,
+};
+
+export { ADDRESS, ABI };
