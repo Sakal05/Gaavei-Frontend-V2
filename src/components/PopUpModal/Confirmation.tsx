@@ -92,20 +92,6 @@ export default function ConfirmationModal({
     }
   };
 
-  // if (isPending) {
-  //   toast.loading("Staking in process...", {
-  //     autoClose: 2000,
-  //   });
-  // }
-  // if (isSuccess) {
-  //   toast.success("Staking successfully completed");
-  //   console.log("data: ", hash);
-  // }
-  // if (isError) {
-  //   toast.error("Error");
-  //   console.log("Error: ", error);
-  // }
-
   if (!isConnected) {
     return (
       <Box
@@ -214,7 +200,7 @@ export default function ConfirmationModal({
                 gap: "20px",
               }}
             >
-              <Button>
+              <Button onClick={() => setOpen(false)}>
                 <Typography variant="button" color="red">
                   Cancel
                 </Typography>
